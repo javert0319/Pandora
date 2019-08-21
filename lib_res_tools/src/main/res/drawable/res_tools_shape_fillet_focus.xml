@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="@color/res_tools_AppTheme"/>
+    <corners android:radius="@dimen/res_tools_normal_fillet_size" />
+
+</shape>

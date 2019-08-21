@@ -1,0 +1,50 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+android {
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    defaultConfig {
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    dataBinding {
+        enabled true
+    }
+    resourcePrefix "res_tools_"
+}
+
+dependencies {
+    api fileTree(dir: 'libs', include: ['*.jar'])
+
+    /*testImplementation*/
+    testImplementation rootProject.ext.dependencies.junit
+
+    /*androidTestImplementation*/
+    androidTestImplementation rootProject.ext.dependencies.runner
+    androidTestImplementation rootProject.ext.dependencies.espresso
+
+    /*implementation*/
+    api rootProject.ext.dependencies.appcompat
+    api rootProject.ext.dependencies.constraint_layout
+    api rootProject.ext.dependencies.kotlin_stdlib_jdk7
+    api rootProject.ext.dependencies.ktx
+    api rootProject.ext.dependencies.kotlinx_coroutines_core
+    api rootProject.ext.dependencies.kotlinx_coroutines_android
+    api rootProject.ext.dependencies.material
+    api rootProject.ext.dependencies.lifecycle_extensions
+    api rootProject.ext.dependencies.glide
+    annotationProcessor  rootProject.ext.dependencies.glide_compiler
+}

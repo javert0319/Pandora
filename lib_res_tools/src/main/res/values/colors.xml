@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="res_tools_colorPrimary">#008577</color>
+    <color name="res_tools_colorPrimaryDark">#00574B</color>
+    <color name="res_tools_colorAccent">#D81B60</color>
+    <color name="res_tools_AppTheme">#EA3A26</color>
+    <color name="res_tools_cWithe">#ffffff</color>
+    <color name="res_tools_AppTheme_start">#D81B60</color>
+    <color name="res_tools_AppTheme_center">#C92C9D</color>
+    <color name="res_tools_AppTheme_end">#8500FF</color>
+    <color name="res_tools_color_item_divid">#666666</color>
+    <color name="res_tools_color_item_clicked">#efefef</color>
+    <color name="res_tools_line_border">#C7C7C7</color>
+    <color name="res_tools_color_Trans">#00000000</color>
+    <color name="res_tools_color_007aff">#007aff</color>
+    <color name="res_tools_color_d">#dddddd</color>
+</resources>

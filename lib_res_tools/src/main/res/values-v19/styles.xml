@@ -1,0 +1,10 @@
+<resources>
+
+    <!--values-v19。v19 开始有 android:windowTranslucentStatus 这个属性-->
+    <style name="res_tools_TranslucentTheme" parent="res_tools_AppTheme">
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+    </style>
+
+
+</resources>

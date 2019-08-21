@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="res_tools_tb_show" type="id" />
+    <item name="res_tools_btn_go" type="id" />
+    <item name="res_tools_view1" type="id" />
+    <item name="res_tools_view2" type="id" />
+    <item name="res_tools_view3" type="id" />
+    <item name="res_tools_view4" type="id" />
+    <item name="res_tools_view5" type="id" />
+    <item name="res_tools_view6" type="id" />
+    <item name="res_tools_view7" type="id" />
+    <item name="res_tools_view9" type="id" />
+    <item name="res_tools_view10" type="id" />
+    <item name="res_tools_view11" type="id" />
+    <item name="res_tools_view12" type="id" />
+    <item name="res_tools_view13" type="id" />
+    <item name="res_tools_view14" type="id" />
+    <item name="res_tools_view15" type="id" />
+    <item name="res_tools_view16" type="id" />
+</resources>

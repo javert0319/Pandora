@@ -1,0 +1,32 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="res_tools_AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <!--<item name="colorPrimary">@color/res_tools_AppTheme</item>-->
+        <!--<item name="colorPrimaryDark">@color/res_tools_AppTheme</item>-->
+        <item name="colorAccent">@color/res_tools_AppTheme_start</item>//控件被选中的颜色
+        <!--<item name="android:textColorPrimary">@color/res_tools_cWithe</item>-->
+        <item name="android:windowBackground">@color/res_tools_cWithe</item>
+        <!--<item name="colorControlNormal">@color/res_tools_cWithe</item>-->//控件的默认色
+
+    </style>
+
+    <style name="res_tools_TranslucentTheme" parent="res_tools_AppTheme" />
+
+    <style name="res_tools_toolbar_theme" parent="res_tools_AppTheme">
+        <item name="android:textColorPrimary">@color/res_tools_cWithe</item>
+        <item name="colorControlNormal">@color/res_tools_cWithe</item>//控件的默认色
+    </style>
+
+
+    <style name="res_tools_normal_btn_theme_style">
+        <item name="android:background">@drawable/res_tools_selector_fillet_theme</item>
+        <item name="android:textColor">@color/res_tools_cWithe</item>
+    </style>
+
+    <style name="res_tools_normal_text_theme_style">
+        <item name="android:textColor">@color/res_tools_selector_text_theme</item>
+    </style>
+
+</resources>
