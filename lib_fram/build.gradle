@@ -23,9 +23,13 @@ android {
 }
 
 dependencies {
-//    api rootProject.ext.dependencies.arouter_api
+    api rootProject.ext.dependencies.arouter_api
 //    annotationProcessor  rootProject.ext.dependencies.arouter_compiler
+//    api rootProject.ext.dependencies.arouter_compiler
     api project(path: ':lib_network')
     api project(path: ':lib_userinfo')
     api project(path: ':lib_customview')
+    api rootProject.ext.dependencies.rxlifecycle_components
+    api rootProject.ext.dependencies.immersionbar
+    api rootProject.ext.dependencies.Multidex
 }

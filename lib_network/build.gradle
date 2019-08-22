@@ -26,4 +26,10 @@ android {
 
 dependencies {
     api project(path: ':lib_res_tools')
+    api project(path: ':lib_userinfo')
+    api rootProject.ext.dependencies.okhttp
+    implementation rootProject.ext.dependencies.okhttp_logging_interceptor
+    implementation rootProject.ext.dependencies.retrofit
+    implementation rootProject.ext.dependencies.retrofit_converter_gson
+    implementation rootProject.ext.dependencies.retrofit_adapter_rxjava
 }

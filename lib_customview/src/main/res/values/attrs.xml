@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources >
+
+
+    <!--圆角图片的属性-->
+    <declare-styleable name="customview_MyRoundView">
+        <attr name="customview_border_width" format="dimension" />
+        <attr name="customview_border_color" format="color" />
+    </declare-styleable>
+
+
+    <declare-styleable name="customview_MyConsTextView" >
+        <attr name="customview_line_hight" format="dimension" />
+        <attr name="customview_title" format="string" />
+        <attr name="customview_title_color" format="color" />
+        <attr name="customview_title_size" format="dimension" />
+        <attr name="customview_context" format="string" />
+        <attr name="customview_context_hint" format="string" />
+        <attr name="customview_context_color" format="color" />
+        <attr name="customview_context_hint_color" format="color" />
+        <attr name="customview_context_size" format="dimension" />
+    </declare-styleable>
+
+
+
+</resources>

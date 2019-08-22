@@ -1,0 +1,21 @@
+<resources>
+
+
+
+    <!--自定义普通对话框的属性(点击旁边不可以取消)-->
+    <style name="customview_Theme_Base_Fragmentdialog" parent="customview_Theme_Fragmentdialog_touchclose">
+        <item name="android:windowCloseOnTouchOutside">false</item>
+        <!--点击其他地方,是否可以关闭-->
+    </style>
+
+    <!--自定义普通对话框的属性(点击旁边可以取消)-->
+    <style name="customview_Theme_Fragmentdialog_touchclose" parent="@android:style/Theme.Holo.Light.Dialog.NoActionBar">
+
+        <item name="android:windowIsFloating">true</item>
+        <!--是否悬浮在activity上-->
+        <item name="android:windowBackground">@color/res_tools_color_Trans</item>
+        <!--背景颜色-->
+    </style>
+
+
+</resources>
