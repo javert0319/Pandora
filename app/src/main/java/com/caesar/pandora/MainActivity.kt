@@ -2,7 +2,7 @@ package com.caesar.pandora
 
 import android.os.Bundle
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.lib.fram.view.BaseSimpleActivity
+import com.caesarlib.fram.view.BaseSimpleActivity
 
 @Route(path = "/main/main")
 class MainActivity : BaseSimpleActivity() {

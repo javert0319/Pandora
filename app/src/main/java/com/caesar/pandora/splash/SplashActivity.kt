@@ -5,7 +5,7 @@ import androidx.appcompat.widget.AppCompatTextView
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.caesar.pandora.R
-import com.lib.fram.view.BaseSimpleActivity
+import com.caesarlib.fram.view.BaseSimpleActivity
 import io.reactivex.Flowable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import java.util.concurrent.TimeUnit
@@ -13,7 +13,6 @@ import java.util.concurrent.TimeUnit
 @Route(path = "/main/splash")
 class SplashActivity : BaseSimpleActivity() {
     override fun onFirstResume() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     var tv_timer: AppCompatTextView? = null

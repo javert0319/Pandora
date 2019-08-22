@@ -1,12 +1,12 @@
 package com.caesarlib.fram.groble;
 
 import android.net.Uri;
+import com.caesarlib.res_tools.NormalStaticData;
 import com.jph.takephoto.app.TakePhoto;
 import com.jph.takephoto.compress.CompressConfig;
 import com.jph.takephoto.model.CropOptions;
 import com.jph.takephoto.model.LubanOptions;
 import com.jph.takephoto.model.TakePhotoOptions;
-import com.lib.tools.NormalStaticData;
 
 import java.io.File;
 

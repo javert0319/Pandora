@@ -1,7 +1,9 @@
-package com.lib.fram.view
+package com.caesarlib.fram.view
 
-import com.lib.fram.viewmodel.BaseSimpleViewModel
-import com.lib.fram.viewmodel.BaseViewModel
+import com.caesarlib.fram.viewmodel.BaseViewModel
+import com.caesarlib.fram.viewmodel.BaseSimpleViewModel
+import com.caesarlib.fram.view.BaseView
+
 
 /**
  * created by Caesar on 2019/1/25

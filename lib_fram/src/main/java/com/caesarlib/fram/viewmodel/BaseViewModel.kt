@@ -1,8 +1,8 @@
-package com.lib.fram.viewmodel
+package com.caesarlib.fram.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
-import com.lib.fram.groble.FramGroble
+import com.caesarlib.fram.groble.FramGroble
 import java.lang.ref.Reference
 import java.lang.ref.WeakReference
 

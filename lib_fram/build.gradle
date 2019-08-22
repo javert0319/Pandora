@@ -1,4 +1,6 @@
 apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 android {
     compileSdkVersion rootProject.ext.android.compileSdkVersion
     defaultConfig {
@@ -32,4 +34,5 @@ dependencies {
     api rootProject.ext.dependencies.rxlifecycle_components
     api rootProject.ext.dependencies.immersionbar
     api rootProject.ext.dependencies.Multidex
+    api rootProject.ext.dependencies.takephoto_library
 }

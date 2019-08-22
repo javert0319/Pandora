@@ -1,6 +1,6 @@
 package com.caesar.pandora
 
-import com.lib.fram.view.MyBaseApplication
+import com.caesarlib.fram.view.MyBaseApplication
 import com.squareup.leakcanary.LeakCanary
 
 class MyApp : MyBaseApplication() {

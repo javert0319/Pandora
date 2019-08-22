@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.lib.fram.view.BaseSimpleActivity
+import com.caesarlib.fram.view.BaseSimpleActivity
 
 @Route(path = "/user/test")
 class DebugTestActivity : BaseSimpleActivity() {

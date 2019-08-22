@@ -24,18 +24,39 @@ android {
 
         multiDexEnabled true
     }
+//    signingConfigs {
+//        release {
+//            storeFile file(project.property('keyStore'))
+//            storePassword project.property('keyStorePassword')
+//            keyAlias project.property('keyAlias')
+//            keyPassword project.property('keyAliasPassword')
+//        }
+//        debug {
+//            storeFile file(project.property('keyStore'))
+//            storePassword project.property('keyStorePassword')
+//            keyAlias project.property('keyAlias')
+//            keyPassword project.property('keyAliasPassword')
+//        }
+//    }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+//        debug {
+//            minifyEnabled false
+//            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+//        }
     }
 
 //    compileOptions {
-//        sourceCompatibility JavaVersion.VERSION_1_10
-//        targetCompatibility JavaVersion.VERSION_1_10
+//        sourceCompatibility JavaVersion.VERSION_1_8
+//        targetCompatibility JavaVersion.VERSION_1_8
 //    }
     resourcePrefix "app_"
+    dataBinding {
+        enabled true
+    }
 }
 
 dependencies {

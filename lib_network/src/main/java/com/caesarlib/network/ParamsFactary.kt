@@ -1,6 +1,5 @@
-package com.lib.network
+package com.caesarlib.network
 
-import com.caesarlib.network.YesApiServiceName
 import com.caesarlib.network.bean.yesapi.ExtInfoData
 import com.caesarlib.res_tools.CaesarLogTool
 import com.caesarlib.res_tools.CaesarStringDealTool
