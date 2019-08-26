@@ -35,7 +35,7 @@ ext {
 
             arouter_api               : 'com.alibaba:arouter-api:1.5.0',
             arouter_compiler          : 'com.alibaba:arouter-compiler:1.2.2',
-            autosize                  : 'me.jessyan:autosize:1.0.5',
+            autosize                  : 'me.jessyan:autosize:1.1.2',
             immersionbar              : 'com.gyf.immersionbar:immersionbar:2.3.3-beta15',
             BRVAH                     : "com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.34",
             Multidex                  : "com.android.support:multidex:1.0.2",

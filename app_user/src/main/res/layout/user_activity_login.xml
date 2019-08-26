@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.caesar.user.viewmodel.LoginViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@id/res_tools_tb_show"
+            layout="@layout/fram_layout_toolbar" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@id/res_tools_view1"
+            android:layout_width="@dimen/res_tools_normal_inputwidth"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="120dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            app:counterEnabled="true"
+            app:counterMaxLength="11"
+            app:errorEnabled="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.493"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/res_tools_tb_show">
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/res_tools_username_hint"
+                android:inputType="phone"
+                android:text="@={model.userName}" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@id/res_tools_view2"
+            android:layout_width="@dimen/res_tools_normal_inputwidth"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="3dp"
+            app:counterEnabled="true"
+            app:counterMaxLength="20"
+            app:layout_constraintEnd_toEndOf="@+id/res_tools_view1"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@id/res_tools_view1"
+            app:layout_constraintTop_toBottomOf="@id/res_tools_view1">
+
+            <com.caesarlib.customview.MyDrawClickEditText
+                android:layout_width="match_parent"
+                android:drawableRight="@android:drawable/ic_menu_view"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:hint="@string/res_tools_password_hint"
+                android:text="@={model.passWord}" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@id/res_tools_view3"
+            style="@style/res_tools_normal_text_theme_style"
+            android:layout_width="wrap_content"
+            android:layout_height="17dp"
+            android:layout_gravity="right"
+            android:layout_marginTop="16dp"
+            android:onClick="@{v->model.goResetPassword()}"
+            android:text="@string/res_tools_forget_password"
+            app:layout_constraintEnd_toEndOf="@id/res_tools_view2"
+            app:layout_constraintTop_toBottomOf="@id/res_tools_view2" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@id/res_tools_btn_go"
+            style="@style/res_tools_normal_btn_theme_style"
+            android:layout_width="@dimen/res_tools_normal_inputwidth"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="16dp"
+            android:onClick="@{v->model.onBtnClick()}"
+            android:text="@string/res_tools_login"
+            app:layout_constraintEnd_toEndOf="@id/res_tools_view2"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@id/res_tools_view2"
+            app:layout_constraintTop_toBottomOf="@id/res_tools_view3" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@id/res_tools_view4"
+            android:layout_width="@dimen/res_tools_normal_inputwidth"
+            android:layout_height="1px"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="24dp"
+            android:background="@color/res_tools_AppTheme_end"
+            app:layout_constraintEnd_toEndOf="@id/res_tools_btn_go"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@id/res_tools_btn_go"
+            app:layout_constraintTop_toBottomOf="@id/res_tools_btn_go" />
+
+
+        <TextView
+            android:id="@id/res_tools_view5"
+            style="@style/res_tools_normal_text_theme_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginRight="4dp"
+            android:onClick="@{v->model.goRegister()}"
+            android:text="@string/res_tools_register_go"
+            app:layout_constraintEnd_toEndOf="@id/res_tools_view4"
+            app:layout_constraintTop_toBottomOf="@id/res_tools_view4" />
+
+        <TextView
+            android:id="@id/res_tools_view6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:text="@string/res_tools_sign_no_username"
+            app:layout_constraintBaseline_toBaselineOf="@id/res_tools_view5"
+            app:layout_constraintEnd_toStartOf="@id/res_tools_view5" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

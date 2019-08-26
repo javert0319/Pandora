@@ -26,8 +26,6 @@ android {
 
 dependencies {
     api rootProject.ext.dependencies.arouter_api
-//    annotationProcessor  rootProject.ext.dependencies.arouter_compiler
-//    api rootProject.ext.dependencies.arouter_compiler
     api project(path: ':lib_network')
     api project(path: ':lib_userinfo')
     api project(path: ':lib_customview')
@@ -35,4 +33,6 @@ dependencies {
     api rootProject.ext.dependencies.immersionbar
     api rootProject.ext.dependencies.Multidex
     api rootProject.ext.dependencies.takephoto_library
+    api rootProject.ext.dependencies.lifecycle_extensions
+    api rootProject.ext.dependencies.autosize
 }

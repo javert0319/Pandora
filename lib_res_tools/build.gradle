@@ -44,7 +44,8 @@ dependencies {
     api rootProject.ext.dependencies.kotlinx_coroutines_core
     api rootProject.ext.dependencies.kotlinx_coroutines_android
     api rootProject.ext.dependencies.material
-    api rootProject.ext.dependencies.lifecycle_extensions
+    api rootProject.ext.dependencies.Material_Dialog
     api rootProject.ext.dependencies.glide
+    api rootProject.ext.dependencies.rxpermissions
     annotationProcessor  rootProject.ext.dependencies.glide_compiler
 }

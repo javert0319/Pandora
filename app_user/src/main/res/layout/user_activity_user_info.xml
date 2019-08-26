@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+  >
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.caesar.user.viewmodel.UserInfoViewModel" />
+
+        <import type="com.caesar.user.R" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@id/res_tools_tb_show"
+            layout="@layout/fram_layout_toolbar" />
+
+
+        <com.caesarlib.customview.MyRoundView
+            android:id="@id/res_tools_view1"
+            android:layout_width="@dimen/res_tools_normal_headimage_size"
+            android:layout_height="@dimen/res_tools_normal_headimage_size"
+            android:layout_marginTop="44dp"
+            android:onClick="@{v->model.onItemClick(v)}"
+            app:customview_border_color="@color/res_tools_AppTheme"
+            app:customview_border_width="4dp"
+            app:defaultImgRes="@{R.mipmap.user_icon_default_headimg}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/res_tools_tb_show"
+            app:netUrl="@{model.extInfo.headImg}" />
+
+        <View
+            android:id="@id/res_tools_view2"
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginTop="32dp"
+            android:background="@color/res_tools_color_item_divid"
+            app:layout_constraintTop_toBottomOf="@id/res_tools_view1" />
+
+        <com.caesarlib.customview.MyConsTextView
+            android:id="@id/res_tools_view3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{v->model.onItemClick(v)}"
+            app:customview_title="@string/res_tools_nickname"
+            app:layout_constraintTop_toBottomOf="@id/res_tools_view2" />
+
+        <com.caesarlib.customview.MyConsTextView
+            android:id="@id/res_tools_view4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{v->model.onItemClick(v)}"
+            app:customview_title="@string/res_tools_age"
+            app:layout_constraintTop_toBottomOf="@id/res_tools_view3" />
+
+        <com.caesarlib.customview.MyConsTextView
+            android:id="@id/res_tools_view5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{v->model.onItemClick(v)}"
+            app:customview_title="@string/res_tools_sex"
+            app:layout_constraintTop_toBottomOf="@id/res_tools_view4" />
+
+        <com.caesarlib.customview.MyConsTextView
+            android:id="@id/res_tools_view6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{v->model.onItemClick(v)}"
+            app:customview_title="@string/res_tools_location"
+            app:layout_constraintTop_toBottomOf="@id/res_tools_view5" />
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@id/cb"
+            style="@style/res_tools_normal_btn_theme_style"
+            android:layout_width="@dimen/res_tools_normal_inputwidth"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:onClick="@{v->model.onItemClick(v)}"
+            android:text="@string/res_tools_signout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/res_tools_view6" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -2,7 +2,6 @@ package com.caesarlib.fram.view
 
 import com.caesarlib.fram.viewmodel.BaseViewModel
 import com.caesarlib.fram.viewmodel.BaseSimpleViewModel
-import com.caesarlib.fram.view.BaseView
 
 
 /**
