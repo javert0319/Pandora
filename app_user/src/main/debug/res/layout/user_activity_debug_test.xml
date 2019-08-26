@@ -7,7 +7,7 @@
     tools:context=".DebugTestActivity">
 
     <include
-        android:id="@+id/value_tb_show"
+        android:id="@+id/res_tools_tb_show"
         layout="@layout/fram_layout_toolbar" />
 
 
@@ -20,7 +20,7 @@
         android:layout_marginTop="204dp"
         android:text="Button"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/value_tb_show" />
+        app:layout_constraintTop_toTopOf="@+id/res_tools_tb_show" />
 
     <ImageView
         android:id="@+id/iv_show"
