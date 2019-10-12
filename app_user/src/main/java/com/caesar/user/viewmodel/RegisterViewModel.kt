@@ -12,7 +12,7 @@ import com.caesarlib.network.NetFacede
 import com.caesarlib.network.ParamsFactary
 import com.caesarlib.network.YesApiServiceName
 import com.caesarlib.res_tools.AppNormalTool
-import com.caesarlib.res_tools.CaesarLogTool
+import com.caesarlib.res_tools.CSLog
 import com.caesarlib.res_tools.CaesarStringDealTool
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -108,7 +108,7 @@ class RegisterViewModel : BaseViewModel<RegisterView>() {
                         .show()
                 }
             }, {
-                CaesarLogTool.I(FramGroble.getValueString(R.string.res_tools_unknown_error))
+                CSLog.I(FramGroble.getValueString(R.string.res_tools_unknown_error))
             })
     }
 

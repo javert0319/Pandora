@@ -12,6 +12,10 @@
 
     </style>
 
+    <style name="res_tools_FullScreenTheme" parent="res_tools_AppTheme" >
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
     <style name="res_tools_TranslucentTheme" parent="res_tools_AppTheme" />
 
     <style name="res_tools_toolbar_theme" parent="res_tools_AppTheme">

@@ -5,7 +5,7 @@ import com.alibaba.android.arouter.facade.Postcard
 import com.alibaba.android.arouter.facade.annotation.Interceptor
 import com.alibaba.android.arouter.facade.callback.InterceptorCallback
 import com.alibaba.android.arouter.facade.template.IInterceptor
-import com.caesarlib.res_tools.CaesarLogTool
+import com.caesarlib.res_tools.CSLog
 
 /**
  * 登录拦截器
@@ -17,11 +17,11 @@ class LoginInterceptor : IInterceptor {
 
 
     override fun process(postcard: Postcard, callback: InterceptorCallback) {
-        CaesarLogTool.I("收到了拦截")
+        CSLog.I("登录拦截器收到了拦截")
         callback.onContinue(postcard)
     }
 
     override fun init(context: Context) {
-        CaesarLogTool.I("初始化")
+        CSLog.I("登录拦截器初始化")
     }
 }

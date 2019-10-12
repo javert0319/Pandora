@@ -18,7 +18,7 @@ import com.caesarlib.network.ParamsFactary
 import com.caesarlib.network.YesApiServiceName
 import com.caesarlib.network.bean.yesapi.ExtInfoData
 import com.caesarlib.res_tools.AppNormalTool
-import com.caesarlib.res_tools.CaesarLogTool
+import com.caesarlib.res_tools.CSLog
 import com.caesarlib.res_tools.CaesarStringDealTool
 import com.caesarlib.res_tools.SDCardTool
 import com.jph.takephoto.app.TakePhoto
@@ -63,7 +63,7 @@ class UserInfoViewModel : BaseViewModel<UserInfoView>() {
                 SDCardTool.CreateFileIfNotExist("VOTE")
                 showChoseDialog()
             } else {
-                CaesarLogTool.I("权限有错误")
+                CSLog.I("权限有错误")
             }
         }
     }
@@ -77,12 +77,12 @@ class UserInfoViewModel : BaseViewModel<UserInfoView>() {
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
-                CaesarLogTool.I("删除图片1")
+                CSLog.I("删除图片1")
             }, {
-                CaesarLogTool.I("删除图片2")
+                CSLog.I("删除图片2")
                 modifyUserInfo()
             }, {
-                CaesarLogTool.I("删除图片3")
+                CSLog.I("删除图片3")
                 modifyUserInfo()
             })
     }
@@ -123,9 +123,9 @@ class UserInfoViewModel : BaseViewModel<UserInfoView>() {
                     DeleteOldImg()
                 }
             }, {
-                CaesarLogTool.I("出现异常" + it.message)
+                CSLog.I("出现异常" + it.message)
             }, {
-                CaesarLogTool.I("结束")
+                CSLog.I("结束")
             })
     }
 

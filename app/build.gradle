@@ -23,10 +23,6 @@ android {
         }
 
         multiDexEnabled true
-//        ndk {
-//            //指定需要的os平台
-//            abiFilters rootProject.ext.android.ndk.abiFilters
-//        }
     }
     signingConfigs {
         release {
@@ -43,7 +39,7 @@ android {
             signingConfig signingConfigs.release
         }
     }
-    resourcePrefix "app_"
+//    resourcePrefix "app_"
     dataBinding {
         enabled true
     }

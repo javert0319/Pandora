@@ -11,6 +11,7 @@ import com.caesar.user.viewmodel.LoginViewModel
 import com.caesarlib.fram.view.BaseActivity
 import com.caesarlib.fram.view.BaseView
 import com.caesarlib.res_tools.AppNormalTool
+import kotlinx.android.synthetic.main.user_activity_login.*
 
 @Route(path = "/user/login")
 class LoginActivity : BaseActivity<BaseView, LoginViewModel>() {
@@ -26,7 +27,7 @@ class LoginActivity : BaseActivity<BaseView, LoginViewModel>() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.user_activity_login)
         binding.model = mViewModel
-        initToorBar(getString(R.string.res_tools_login),  true, true)
+        initToorBar(getString(R.string.res_tools_login), true, true)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -43,13 +44,13 @@ class LoginActivity : BaseActivity<BaseView, LoginViewModel>() {
     }
 
     override fun onKeyboardChange(isPopup: Boolean, keyboardHeight: Int) {
-        val layoutParams = binding.resToolsView1.layoutParams as ConstraintLayout.LayoutParams
+        val layoutParams = res_tools_view1.layoutParams as ConstraintLayout.LayoutParams
         if (isPopup) {
             layoutParams.topMargin = AppNormalTool.dip2px(this, 10f)
         } else {
             layoutParams.topMargin = AppNormalTool.dip2px(this, 120f)
         }
-        binding.resToolsView1.layoutParams = layoutParams
+        res_tools_view1.layoutParams = layoutParams
 
     }
 }

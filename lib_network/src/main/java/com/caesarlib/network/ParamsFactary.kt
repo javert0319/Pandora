@@ -1,7 +1,7 @@
 package com.caesarlib.network
 
 import com.caesarlib.network.bean.yesapi.ExtInfoData
-import com.caesarlib.res_tools.CaesarLogTool
+import com.caesarlib.res_tools.CSLog
 import com.caesarlib.res_tools.CaesarStringDealTool
 import com.caesarlib.userinfo.ValueUserData
 import okhttp3.MediaType
@@ -32,7 +32,7 @@ object ParamsFactary {
             stringBuilder.append(str)
         }
         stringBuilder.append(yesApi_app_secrect)
-        CaesarLogTool.I("生成的sign:$stringBuilder")
+        CSLog.I("生成的sign:$stringBuilder")
         return CaesarStringDealTool.MD5(stringBuilder.toString()).toUpperCase()
     }
 

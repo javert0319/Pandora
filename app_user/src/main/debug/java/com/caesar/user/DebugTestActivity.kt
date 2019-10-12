@@ -18,7 +18,7 @@ class DebugTestActivity : BaseSimpleActivity() {
         setContentView(R.layout.user_activity_debug_test)
         initToorBar("测试")
         findViewById<Button>(R.id.user_button).setOnClickListener {
-//            CaesarLogTool.I(FramGroble.getTopActivity()?.componentName?.className)
+//            CSLog.I(FramGroble.getTopActivity()?.componentName?.className)
             shgd()
         }
     }

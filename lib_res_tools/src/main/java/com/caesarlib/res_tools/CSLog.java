@@ -8,7 +8,7 @@ import android.util.Log;
  * date: 2017/1/20.
  */
 
-public class CaesarLogTool {
+public class CSLog {
     private static final String TAG = "CaesarLog";
 
     /**

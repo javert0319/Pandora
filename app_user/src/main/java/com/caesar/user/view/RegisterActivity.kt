@@ -11,6 +11,7 @@ import com.caesar.user.databinding.UserActivityRegisterBinding
 import com.caesar.user.viewmodel.RegisterViewModel
 import com.caesarlib.fram.view.BaseActivity
 import com.caesarlib.res_tools.AppNormalTool
+import kotlinx.android.synthetic.main.user_activity_register.*
 
 @Route(path = "/user/register")
 class RegisterActivity : BaseActivity<RegisterView, RegisterViewModel>(), RegisterView {
@@ -22,7 +23,7 @@ class RegisterActivity : BaseActivity<RegisterView, RegisterViewModel>(), Regist
     override fun onCaptchaRetuen(src: String) {
         val decod = Base64.decode(src, Base64.DEFAULT)
         val bitmap = BitmapFactory.decodeByteArray(decod, 0, decod.size)
-        binding.resToolsView8.setImageBitmap(bitmap)
+        res_tools_view8.setImageBitmap(bitmap)
     }
 
     override fun createViewModel(): RegisterViewModel {
@@ -42,13 +43,13 @@ class RegisterActivity : BaseActivity<RegisterView, RegisterViewModel>(), Regist
     }
 
     override fun onKeyboardChange(isPopup: Boolean, keyboardHeight: Int) {
-        val layoutParams = binding.resToolsView3.layoutParams as ConstraintLayout.LayoutParams
+        val layoutParams = res_tools_view3.layoutParams as ConstraintLayout.LayoutParams
         if (isPopup) {
             layoutParams.topMargin = AppNormalTool.dip2px(this, 10f)
         } else {
             layoutParams.topMargin = AppNormalTool.dip2px(this, 90f)
         }
-        binding.resToolsView3.layoutParams = layoutParams
+       res_tools_view3.layoutParams = layoutParams
     }
 
 }

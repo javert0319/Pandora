@@ -9,7 +9,7 @@ import com.caesar.user.databinding.UserActivityUserInfoBinding
 import com.caesar.user.viewmodel.UserInfoViewModel
 import com.caesarlib.fram.groble.FramGroble
 import com.caesarlib.fram.view.BaseActivity
-import com.caesarlib.res_tools.CaesarLogTool
+import com.caesarlib.res_tools.CSLog
 import com.jph.takephoto.app.TakePhoto
 import com.jph.takephoto.app.TakePhotoImpl
 import com.jph.takephoto.model.InvokeParam
@@ -89,16 +89,16 @@ class UserInfoActivity : BaseActivity<UserInfoView, UserInfoViewModel>(), TakePh
     }
 
     override fun takeSuccess(result: TResult?) {
-        CaesarLogTool.I("拍照成功", result?.toString())
+        CSLog.I("拍照成功", result?.toString())
         mViewModel?.uploadPic(result)
     }
 
     override fun takeCancel() {
-        CaesarLogTool.I("拍照取消")
+        CSLog.I("拍照取消")
     }
 
     override fun takeFail(result: TResult?, msg: String?) {
-        CaesarLogTool.I("拍照失败" + msg)
+        CSLog.I("拍照失败" + msg)
     }
 
     override fun invoke(invokeParam: InvokeParam): PermissionManager.TPermissionType {

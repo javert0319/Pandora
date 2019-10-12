@@ -31,6 +31,7 @@ dependencies {
     api project(path: ':lib_customview')
     api rootProject.ext.dependencies.rxlifecycle_components
     api rootProject.ext.dependencies.immersionbar
+    api rootProject.ext.dependencies.immersionbar_ktx
     api rootProject.ext.dependencies.Multidex
     api rootProject.ext.dependencies.takephoto_library
     api rootProject.ext.dependencies.lifecycle_extensions

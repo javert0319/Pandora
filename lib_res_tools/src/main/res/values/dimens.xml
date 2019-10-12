@@ -4,4 +4,8 @@
     <dimen name="res_tools_normal_fillet_size">10dp</dimen>
     <dimen name="res_tools_normal_small_txt_size">11sp</dimen>
     <dimen name="res_tools_normal_headimage_size">120dp</dimen>
+
+    <dimen name="res_tools_normal_button_size">50dp</dimen>
+
+
 </resources>
