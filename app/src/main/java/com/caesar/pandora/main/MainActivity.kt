@@ -34,21 +34,20 @@ class MainActivity : BaseSimpleActivity() {
         frags.add(FriendFragment())
         frags.add(MineFragment())
         vpView.adapter = MainVpAdapter(supportFragmentManager, frags)
-
+        vpView.offscreenPageLimit = 3
+        tabView.setupWithViewPager(vpView)
+        tabView.removeAllTabs()
         val tabs = resources.getStringArray(R.array.tabs)
         for (num in 0..2) {
             val tabChild = tabView.newTab()
-            val viewChild = LayoutInflater.from(this).inflate(R.layout.layout_main_tab, tabView,false)
+            val viewChild =
+                LayoutInflater.from(this).inflate(R.layout.layout_main_tab, tabView, false)
             viewChild.findViewById<AppCompatImageView>(R.id.res_tools_tab1)
                 .setImageResource(tabimg[num])
             viewChild.findViewById<AppCompatTextView>(R.id.res_tools_tab2).text = tabs[num]
-
             tabChild.customView = viewChild
-//            tabChild.setCustomView(viewChild)
             tabView.addTab(tabChild)
         }
-
-//        tabView.setupWithViewPager(vpView)
 
     }
 }
