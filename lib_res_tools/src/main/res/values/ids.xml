@@ -17,4 +17,8 @@
     <item name="res_tools_view14" type="id" />
     <item name="res_tools_view15" type="id" />
     <item name="res_tools_view16" type="id" />
+    <item name="res_tools_tab1" type="id" />
+    <item name="res_tools_tab2" type="id" />
+    <item name="res_tools_tab3" type="id" />
+    <item name="res_tools_tab4" type="id" />
 </resources>

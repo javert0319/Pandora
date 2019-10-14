@@ -41,4 +41,7 @@
     <string name="res_tools_location_input">请选择所在地</string>
     <string name="res_tools_man">男</string>
     <string name="res_tools_woman">女</string>
+    <string name="res_tools_home">首页</string>
+    <string name="res_tools_friend">朋友</string>
+    <string name="res_tools_mine">我的</string>
 </resources>

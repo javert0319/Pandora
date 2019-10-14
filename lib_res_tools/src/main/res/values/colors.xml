@@ -5,6 +5,7 @@
     <color name="res_tools_colorAccent">#D81B60</color>
     <color name="res_tools_AppTheme">#EA3A26</color>
     <color name="res_tools_cWithe">#ffffff</color>
+    <color name="res_tools_cBlack">#000000</color>
     <color name="res_tools_AppTheme_start">#D81B60</color>
     <color name="res_tools_AppTheme_center">#C92C9D</color>
     <color name="res_tools_AppTheme_end">#8500FF</color>

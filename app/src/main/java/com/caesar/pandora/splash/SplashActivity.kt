@@ -37,10 +37,10 @@ class SplashActivity : BaseSimpleActivity() {
     //计时开始
    private fun start() {
         disposable =
-            Flowable.intervalRange(0, 5, 0, 1, TimeUnit.SECONDS, AndroidSchedulers.mainThread())
+            Flowable.intervalRange(0, 2, 0, 1, TimeUnit.SECONDS, AndroidSchedulers.mainThread())
                 .compose(this.bindToLifecycle())
                 .subscribe({
-                    resToolsView1.text = (4 - it).toString()
+                    resToolsView1.text = (1 - it).toString()
                 }, {
                     goMain()
                 }, {

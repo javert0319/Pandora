@@ -8,7 +8,7 @@
         android:name=".MyApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/res_tools_app_user_name"
+        android:label="Pandora.friend"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/res_tools_TranslucentTheme"

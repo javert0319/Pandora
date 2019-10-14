@@ -52,7 +52,9 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     if (!rootProject.ext.is_build_module) {
         api project(path: ':app_user')
+        api project(path: ':app_friend')
     }
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     kapt rootProject.ext.dependencies.arouter_compiler
     debugImplementation rootProject.ext.dependencies.leakcanary
     releaseImplementation rootProject.ext.dependencies.leakcanary_no_op
