@@ -35,8 +35,8 @@
             android:onClick="@{v->model.goLogin()}"
             android:text="@string/res_tools_login_go"
             android:textSize="@dimen/res_tools_normal_small_txt_size"
-            app:layout_constraintEnd_toEndOf="@+id/cb"
-            app:layout_constraintTop_toBottomOf="@+id/cb"
+            app:layout_constraintEnd_toEndOf="@id/res_tools_btn_go"
+            app:layout_constraintTop_toBottomOf="@id/res_tools_btn_go"
             />
 
         <TextView
@@ -107,8 +107,8 @@
             android:onClick="@{v->model.goProtocol()}"
             android:text="@string/res_tools_agreement"
             android:textSize="@dimen/res_tools_normal_small_txt_size"
-            app:layout_constraintBaseline_toBaselineOf="@+id/res_tools_view7"
-            app:layout_constraintStart_toEndOf="@+id/res_tools_view7"
+            app:layout_constraintBaseline_toBaselineOf="@id/res_tools_view7"
+            app:layout_constraintStart_toEndOf="@id/res_tools_view7"
             />
 
         <TextView
@@ -118,21 +118,21 @@
             android:layout_marginTop="15dp"
             android:text="@string/res_tools_sign_agreement"
             android:textSize="@dimen/res_tools_normal_small_txt_size"
-            app:layout_constraintStart_toStartOf="@+id/cb"
-            app:layout_constraintTop_toBottomOf="@+id/cb"
+            app:layout_constraintStart_toStartOf="@id/res_tools_btn_go"
+            app:layout_constraintTop_toBottomOf="@id/res_tools_btn_go"
             />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/cb"
+            android:id="@id/res_tools_btn_go"
             style="@style/res_tools_normal_btn_theme_style"
             android:layout_width="@dimen/res_tools_normal_inputwidth"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             android:onClick="@{v->model.checkData()}"
             android:text="@string/res_tools_register"
-            app:layout_constraintEnd_toEndOf="@+id/res_tools_view5"
-            app:layout_constraintStart_toStartOf="@+id/res_tools_view5"
-            app:layout_constraintTop_toBottomOf="@+id/res_tools_view9"
+            app:layout_constraintEnd_toEndOf="@id/res_tools_view5"
+            app:layout_constraintStart_toStartOf="@id/res_tools_view5"
+            app:layout_constraintTop_toBottomOf="@id/res_tools_view9"
             />
 
         <ImageView
@@ -142,8 +142,8 @@
             android:layout_marginTop="8dp"
             android:background="@color/res_tools_color_item_divid"
             android:onClick="@{v->model.onCheckNum()}"
-            app:layout_constraintEnd_toEndOf="@+id/res_tools_view5"
-            app:layout_constraintTop_toBottomOf="@+id/res_tools_view5"
+            app:layout_constraintEnd_toEndOf="@id/res_tools_view5"
+            app:layout_constraintTop_toBottomOf="@id/res_tools_view5"
             />
 
         <com.caesarlib.customview.MyDrawClickEditText
@@ -155,10 +155,10 @@
             android:maxLength="5"
             android:hint="@string/res_tools_check_number"
             android:text="@={model.checkNum}"
-            app:layout_constraintBottom_toBottomOf="@+id/res_tools_view8"
-            app:layout_constraintEnd_toStartOf="@+id/res_tools_view8"
-            app:layout_constraintStart_toStartOf="@+id/res_tools_view5"
-            app:layout_constraintTop_toTopOf="@+id/res_tools_view8"
+            app:layout_constraintBottom_toBottomOf="@id/res_tools_view8"
+            app:layout_constraintEnd_toStartOf="@id/res_tools_view8"
+            app:layout_constraintStart_toStartOf="@id/res_tools_view5"
+            app:layout_constraintTop_toTopOf="@id/res_tools_view8"
             />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

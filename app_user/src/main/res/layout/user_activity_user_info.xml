@@ -77,7 +77,7 @@
 
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@id/cb"
+            android:id="@id/res_tools_btn_go"
             style="@style/res_tools_normal_btn_theme_style"
             android:layout_width="@dimen/res_tools_normal_inputwidth"
             android:layout_height="wrap_content"
@@ -86,6 +86,6 @@
             android:text="@string/res_tools_signout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/res_tools_view6" />
+            app:layout_constraintTop_toBottomOf="@id/res_tools_view6" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
