@@ -13,6 +13,7 @@ import com.caesar.pandora.homepage.fragment.HomeFragment
 import com.caesar.user.fragment.MineFragment
 import com.caesarlib.fram.view.BaseSimpleActivity
 import com.google.android.material.tabs.TabLayout
+import com.gyf.immersionbar.ktx.immersionBar
 
 @Route(path = "/main/main")
 class MainActivity : BaseSimpleActivity() {

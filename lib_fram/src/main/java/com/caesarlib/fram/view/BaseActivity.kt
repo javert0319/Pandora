@@ -15,7 +15,7 @@ abstract class BaseActivity<V, T : BaseViewModel<V>> : ToolBarActivity(), BaseVi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mViewModel = createViewModel()
-        mViewModel?.attachView(this as? V) //View与ViewModel建立关系
+        mViewModel?.attachView(this as V) //View与ViewModel建立关系
     }
 
     protected abstract fun createViewModel(): T
