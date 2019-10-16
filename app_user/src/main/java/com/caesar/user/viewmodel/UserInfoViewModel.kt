@@ -151,7 +151,7 @@ class UserInfoViewModel : BaseViewModel<UserInfoView>() {
                     modifyUserInfo()
                 }
             }
-            R.id.cb -> {
+            R.id.res_tools_btn_go -> {
 
             }
         }
