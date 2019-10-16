@@ -11,6 +11,7 @@ import com.caesar.friend.fragment.FriendFragment
 import com.caesar.pandora.R
 import com.caesar.pandora.homepage.fragment.HomeFragment
 import com.caesar.user.fragment.MineFragment
+import com.caesarlib.customview.AwesomeFontTextView
 import com.caesarlib.fram.view.BaseSimpleActivity
 import com.google.android.material.tabs.TabLayout
 import com.gyf.immersionbar.ktx.immersionBar
@@ -19,8 +20,6 @@ import com.gyf.immersionbar.ktx.immersionBar
 class MainActivity : BaseSimpleActivity() {
     private lateinit var tabView: TabLayout
     private lateinit var vpView: ViewPager
-    private val tabimg =
-        intArrayOf(R.drawable.st_tab_home, R.drawable.st_tab_friend, R.drawable.st_tab_mine)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,12 +38,12 @@ class MainActivity : BaseSimpleActivity() {
         tabView.setupWithViewPager(vpView)
         tabView.removeAllTabs()
         val tabs = resources.getStringArray(R.array.tabs)
+        val tabFonts = resources.getStringArray(R.array.tabs_font)
         for (num in 0..2) {
             val tabChild = tabView.newTab()
             val viewChild =
                 LayoutInflater.from(this).inflate(R.layout.layout_main_tab, tabView, false)
-            viewChild.findViewById<AppCompatImageView>(R.id.res_tools_tab1)
-                .setImageResource(tabimg[num])
+            viewChild.findViewById<AwesomeFontTextView>(R.id.res_tools_tab1).text  = tabFonts[num]
             viewChild.findViewById<AppCompatTextView>(R.id.res_tools_tab2).text = tabs[num]
             tabChild.customView = viewChild
             tabView.addTab(tabChild)

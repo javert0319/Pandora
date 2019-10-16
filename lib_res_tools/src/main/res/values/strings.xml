@@ -1,5 +1,5 @@
 <resources>
-    <string name="res_tools_app_name">天天投票</string>
+    <string name="res_tools_app_name">Pandora</string>
     <string name="res_tools_app_user_name">Pandora.user</string>
     <string name="res_tools_username_hint">请输入您的手机号</string>
     <string name="res_tools_password_hint">请输入您的密码</string>
@@ -44,4 +44,8 @@
     <string name="res_tools_home">首页</string>
     <string name="res_tools_friend">朋友</string>
     <string name="res_tools_mine">我的</string>
+
+    <string name="res_tools_font_home">&#xf022;</string>
+    <string name="res_tools_font_friend">&#xf2b5;</string>
+    <string name="res_tools_font_mine">&#xf007;</string>
 </resources>

@@ -6,11 +6,12 @@
     android:orientation="vertical">
 
 
-    <androidx.appcompat.widget.AppCompatImageView
+    <com.caesarlib.customview.AwesomeFontTextView
         android:id="@id/res_tools_tab1"
-        android:layout_width="@dimen/res_tools_normal_view_size_small"
-        android:layout_height="@dimen/res_tools_normal_view_size_small"
-        android:scaleType="centerCrop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/st_tab_txt"
+        android:textSize="@dimen/res_tools_normal_big_txt_size"
         />
 
     <androidx.appcompat.widget.AppCompatTextView
