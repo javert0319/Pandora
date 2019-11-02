@@ -1,9 +1,6 @@
 package com.caesar.user
 
-import android.os.Build
 import android.os.Bundle
-import android.util.ArrayMap
-import android.util.Log
 import androidx.appcompat.widget.AppCompatButton
 import com.alibaba.android.arouter.launcher.ARouter
 import com.caesarlib.fram.view.BaseSimpleActivity
@@ -11,17 +8,11 @@ import com.caesarlib.network.NetFacede
 import com.caesarlib.network.ParamsFactary
 import com.caesarlib.network.YesApiServiceName
 import com.caesarlib.res_tools.CaesarStringDealTool
-import com.caesarlib.userinfo.ValueUserData
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import okhttp3.RequestBody
-import retrofit2.Retrofit
 
 class DebugMainActivity : BaseSimpleActivity() {
     override fun onFirstResume() {
-
 //        NetFacede.getInstance().defaultService.userLogin(
 //            ParamsFactary.userLoginARegisterParam(
 //                YesApiServiceName.LOGIN,
@@ -35,7 +26,6 @@ class DebugMainActivity : BaseSimpleActivity() {
 //                    ValueUserData.setUserInfo(it.data.uuid, it.data.token)
 //                }
 //            }
-
         GlobalScope.launch {
 //                val result = BaseRepository().safeApiCall {
                 NetFacede.getInstance().defaultService.userLogin(

@@ -6,14 +6,8 @@ import com.caesar.user.R
 import com.caesarlib.fram.groble.FramGroble
 import com.caesarlib.fram.view.BaseView
 import com.caesarlib.fram.viewmodel.BaseViewModel
-import com.caesarlib.network.NetFacede
-import com.caesarlib.network.ParamsFactary
-import com.caesarlib.network.YesApiServiceName
 import com.caesarlib.res_tools.AppNormalTool
 import com.caesarlib.res_tools.CaesarStringDealTool
-import com.caesarlib.userinfo.ValueUserData
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
 
 /**
  * created by Caesar on 2019/4/8

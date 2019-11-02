@@ -2,8 +2,6 @@ package com.caesarlib.fram.view
 
 import android.os.Bundle
 import com.caesarlib.fram.viewmodel.BaseViewModel
-import com.caesarlib.fram.view.BaseView
-import com.caesarlib.fram.view.ToolBarActivity
 
 /**基类activity
  * created by Caesar on 2019/1/25
