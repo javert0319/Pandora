@@ -30,20 +30,20 @@ class LoginViewModel : BaseViewModel<BaseView>() {
                 FramGroble.getValueString(R.string.res_tools_user_pass_none)
             )
             else -> {
-                NetFacede.getInstance().defaultService.userLogin(
-                    ParamsFactary.userLoginARegisterParam(
-                        YesApiServiceName.LOGIN,
-                        userName.get(),
-                        CaesarStringDealTool.MD5(passWord.get())
-                    )
-                ).subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe {
-                        if (it.data.err_code == 0) {
-                            ValueUserData.setUserInfo(it.data.uuid,it.data.token)
-                            FramGroble.getTopActivity()?.finish()
-                        }
-                    }
+//                NetFacede.getInstance().defaultService.userLogin(
+//                    ParamsFactary.userLoginARegisterParam(
+//                        YesApiServiceName.LOGIN,
+//                        userName.get(),
+//                        CaesarStringDealTool.MD5(passWord.get())
+//                    )
+//                ).subscribeOn(Schedulers.io())
+//                    .observeOn(AndroidSchedulers.mainThread())
+//                    .subscribe {
+//                        if (it.data.err_code == 0) {
+//                            ValueUserData.setUserInfo(it.data.uuid,it.data.token)
+//                            FramGroble.getTopActivity()?.finish()
+//                        }
+//                    }
             }
         }
     }

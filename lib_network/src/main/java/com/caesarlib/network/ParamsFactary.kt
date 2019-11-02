@@ -6,7 +6,6 @@ import com.caesarlib.res_tools.CaesarStringDealTool
 import com.caesarlib.userinfo.ValueUserData
 import okhttp3.MediaType
 import okhttp3.RequestBody
-import java.util.*
 
 /**
  * created by Caesar on 2019/4/4
@@ -14,11 +13,11 @@ import java.util.*
  */
 object ParamsFactary {
 
-    private val TEXT_PLAIN = "text/plain"
-    private val yesApi_app_secrect = "rTXetPWsc1DloSrnxGdMQOLjOyWZplxkOByYcaOZG2i0vOWEPXpa6hvH4vCKzAne"
-    private val yesApi_app_key = "B364FE9BE8CE6A134D8FBE7631564BC1"
+    private const val TEXT_PLAIN = "text/plain"
+    private const val yesApi_app_secrect = "rTXetPWsc1DloSrnxGdMQOLjOyWZplxkOByYcaOZG2i0vOWEPXpa6hvH4vCKzAne"
+    private const val yesApi_app_key = "B364FE9BE8CE6A134D8FBE7631564BC1"
 
-    private fun yesApiBaseParams(apiname: String?): MutableMap<String, RequestBody> {
+    private fun yesApiBaseParams(apiname: String?): HashMap<String, RequestBody> {
         val params = HashMap<String, RequestBody>()
         params["app_key"] = createRequestBody(yesApi_app_key)
         params["service"] = createRequestBody(apiname)
@@ -32,7 +31,7 @@ object ParamsFactary {
             stringBuilder.append(str)
         }
         stringBuilder.append(yesApi_app_secrect)
-        CSLog.I("生成的sign:$stringBuilder")
+        CSLog.d("生成的sign:$stringBuilder")
         return CaesarStringDealTool.MD5(stringBuilder.toString()).toUpperCase()
     }
 
@@ -44,7 +43,7 @@ object ParamsFactary {
      * @return 结果
      */
     private fun createRequestBody(content: String?): RequestBody {
-        return RequestBody.create(MediaType.parse(TEXT_PLAIN), content)
+        return RequestBody.create(MediaType.parse(TEXT_PLAIN), content as String)
     }
 
 
@@ -54,13 +53,11 @@ object ParamsFactary {
      * @param apiname  接口名字
      * @return 结果
      */
-    fun yesApiNormalParam(apiname: String?): Map<String, RequestBody> {
+    fun yesApiNormalParam(apiname: String?): HashMap<String, RequestBody> {
         val params = yesApiBaseParams(apiname)
         params["uuid"] = createRequestBody(ValueUserData.getUserUuid())
         params["token"] = createRequestBody(ValueUserData.getUserToken())
         params["sign"] = createRequestBody(CreateSign(apiname, ValueUserData.getUserToken(), ValueUserData.getUserUuid()))
-
-
         return params
     }
 
@@ -73,8 +70,8 @@ object ParamsFactary {
      * @param passward 密码
      * @return 结果
      */
-    fun userLoginARegisterParam(apiname: String?, username: String?, passward: String?): Map<String, RequestBody> {
-        val params = yesApiBaseParams(apiname)
+    fun userLoginARegisterParam(apiname: String?, username: String?, passward: String?): HashMap<String, RequestBody> {
+        var params = yesApiBaseParams(apiname)
         params["password"] = createRequestBody(passward)
         params["username"] = createRequestBody(username)
         params["sign"] = createRequestBody(CreateSign(passward, apiname, username))
@@ -87,7 +84,7 @@ object ParamsFactary {
      *
      * @return 结果
      */
-    fun createCaptchaParam(): Map<String, RequestBody> {
+    fun createCaptchaParam(): HashMap<String, RequestBody> {
         val params = yesApiBaseParams(YesApiServiceName.CAPTCREATE)
         params["return_format"] = createRequestBody("data")
         params["sign"] = createRequestBody(CreateSign("data", YesApiServiceName.CAPTCREATE))
@@ -101,7 +98,7 @@ object ParamsFactary {
      * @param captcha_id   验证码唯一id
      * @return 结果
      */
-    fun verifyCaptchaParam(captcha_code: String, captcha_id: String): Map<String, RequestBody> {
+    fun verifyCaptchaParam(captcha_code: String, captcha_id: String): HashMap<String, RequestBody> {
         val params = yesApiBaseParams(YesApiServiceName.CAPTVERIFY)
         params["captcha_code"] = createRequestBody(captcha_code)
         params["captcha_id"] = createRequestBody(captcha_id)
@@ -115,7 +112,7 @@ object ParamsFactary {
      *
      * @return 结果
      */
-    fun mofidyUserInfoParam(extInfoData: ExtInfoData?): Map<String, RequestBody> {
+    fun mofidyUserInfoParam(extInfoData: ExtInfoData?): HashMap<String, RequestBody> {
         val params = yesApiBaseParams(YesApiServiceName.UPDATAEXTINFO)
         params["uuid"] = createRequestBody(ValueUserData.getUserUuid())
         params["token"] = createRequestBody(ValueUserData.getUserToken())
@@ -137,13 +134,12 @@ object ParamsFactary {
      * @param fileUrl  图片地址
      * @return 结果
      */
-    fun DeleteFileParam(fileUrl: String): Map<String, RequestBody> {
+    fun DeleteFileParam(fileUrl: String): HashMap<String, RequestBody> {
         val params = yesApiBaseParams(YesApiServiceName.DeleteFile)
         params["url"] = createRequestBody(fileUrl)
         params["uuid"] = createRequestBody(ValueUserData.getUserUuid())
         params["token"] = createRequestBody(ValueUserData.getUserToken())
-        params["sign"] =
-            createRequestBody(CreateSign(YesApiServiceName.DeleteFile, ValueUserData.getUserToken(), fileUrl, ValueUserData.getUserUuid()))
+        params["sign"] = createRequestBody(CreateSign(YesApiServiceName.DeleteFile, ValueUserData.getUserToken(), fileUrl, ValueUserData.getUserUuid()))
         return params
     }
 

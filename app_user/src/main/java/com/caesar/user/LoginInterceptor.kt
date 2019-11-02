@@ -17,11 +17,11 @@ class LoginInterceptor : IInterceptor {
 
 
     override fun process(postcard: Postcard, callback: InterceptorCallback) {
-        CSLog.I("登录拦截器收到了拦截")
+        CSLog.d("登录拦截器收到了拦截")
         callback.onContinue(postcard)
     }
 
     override fun init(context: Context) {
-        CSLog.I("登录拦截器初始化")
+        CSLog.d("登录拦截器初始化")
     }
 }

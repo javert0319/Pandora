@@ -35,14 +35,16 @@ abstract class ToolBarFragment : RxFragment(), OnKeyboardListener{
 
     }
 
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        when (item?.itemId) {
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
             android.R.id.home -> {
                 onBackPressed()
             }
         }
-        return super.onOptionsItemSelected(item!!)
+        return super.onOptionsItemSelected(item)
     }
+
 
     fun onBackPressed(): Boolean {
         val count = fragmentManager!!.backStackEntryCount
@@ -55,7 +57,7 @@ abstract class ToolBarFragment : RxFragment(), OnKeyboardListener{
     }
 
     override fun onKeyboardChange(isPopup: Boolean, keyboardHeight: Int) {
-        CSLog.I("键盘改变,显示与否:$isPopup///高度:$keyboardHeight")
+        CSLog.d("键盘改变,显示与否:$isPopup///高度:$keyboardHeight")
     }
 
 }

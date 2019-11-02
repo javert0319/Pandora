@@ -19,6 +19,7 @@ import com.jph.takephoto.permission.InvokeListener
 import com.jph.takephoto.permission.PermissionManager
 import com.jph.takephoto.permission.PermissionManager.TPermissionType
 import com.jph.takephoto.permission.TakePhotoInvocationHandler
+import kotlinx.android.synthetic.main.user_activity_user_info.*
 
 
 @Route(path = "/user/info")
@@ -44,14 +45,14 @@ class UserInfoActivity : BaseActivity<UserInfoView, UserInfoViewModel>(), TakePh
     }
 
     override fun UserInfoUpdata() {
-        binding.resToolsView3.upDataContxt(mViewModel?.extInfo?.get()?.nickName)
-        binding.resToolsView4.upDataContxt(if (mViewModel?.extInfo?.get()?.age == 0) "" else mViewModel?.extInfo?.get()?.age.toString())
-        binding.resToolsView5.upDataContxt(
+        res_tools_view3.upDataContxt(mViewModel?.extInfo?.get()?.nickName)
+        res_tools_view4.upDataContxt(if (mViewModel?.extInfo?.get()?.age == 0) "" else mViewModel?.extInfo?.get()?.age.toString())
+        res_tools_view5.upDataContxt(
             if (mViewModel?.extInfo?.get()?.sex == 0) "" else if (mViewModel?.extInfo?.get()?.sex == 1) FramGroble.getValueString(R.string.res_tools_man) else FramGroble.getValueString(
                 R.string.res_tools_woman
             )
         )
-        binding.resToolsView6.upDataContxt(mViewModel?.extInfo?.get()?.province + mViewModel?.extInfo?.get()?.city + mViewModel?.extInfo?.get()?.area)
+        res_tools_view6.upDataContxt(mViewModel?.extInfo?.get()?.province + mViewModel?.extInfo?.get()?.city + mViewModel?.extInfo?.get()?.area)
     }
 
     override fun onFirstResume() {
@@ -78,30 +79,31 @@ class UserInfoActivity : BaseActivity<UserInfoView, UserInfoViewModel>(), TakePh
     }
 
 
-    override fun onSaveInstanceState(outState: Bundle?) {
+    override fun onSaveInstanceState(outState: Bundle) {
         getTakePhoto().onSaveInstanceState(outState)
         super.onSaveInstanceState(outState)
     }
 
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
         getTakePhoto().onActivityResult(requestCode, resultCode, data)
     }
 
     override fun takeSuccess(result: TResult?) {
-        CSLog.I("拍照成功", result?.toString())
+        CSLog.d("拍照成功", result?.toString())
         mViewModel?.uploadPic(result)
     }
 
     override fun takeCancel() {
-        CSLog.I("拍照取消")
+        CSLog.d("拍照取消")
     }
 
     override fun takeFail(result: TResult?, msg: String?) {
-        CSLog.I("拍照失败" + msg)
+        CSLog.d("拍照失败$msg")
     }
 
-    override fun invoke(invokeParam: InvokeParam): PermissionManager.TPermissionType {
+    override fun invoke(invokeParam: InvokeParam): TPermissionType {
         val type = PermissionManager.checkPermission(TContextWrap.of(this), invokeParam.method)
         if (TPermissionType.WAIT == type) {
             this.invokeParam = invokeParam

@@ -63,7 +63,7 @@ class UserInfoViewModel : BaseViewModel<UserInfoView>() {
                 SDCardTool.CreateFileIfNotExist("VOTE")
                 showChoseDialog()
             } else {
-                CSLog.I("权限有错误")
+                CSLog.d("权限有错误")
             }
         }
     }
@@ -77,12 +77,12 @@ class UserInfoViewModel : BaseViewModel<UserInfoView>() {
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
-                CSLog.I("删除图片1")
+                CSLog.d("删除图片1")
             }, {
-                CSLog.I("删除图片2")
+                CSLog.d("删除图片2")
                 modifyUserInfo()
             }, {
-                CSLog.I("删除图片3")
+                CSLog.d("删除图片3")
                 modifyUserInfo()
             })
     }
@@ -123,9 +123,9 @@ class UserInfoViewModel : BaseViewModel<UserInfoView>() {
                     DeleteOldImg()
                 }
             }, {
-                CSLog.I("出现异常" + it.message)
+                CSLog.d("出现异常" + it.message)
             }, {
-                CSLog.I("结束")
+                CSLog.d("结束")
             })
     }
 

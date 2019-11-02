@@ -28,4 +28,13 @@ public class UserLoginData extends BaseYesApiData {
         this.token = token;
     }
 
+    @Override
+    public String toString() {
+        return "UserLoginData{" +
+                "uuid='" + uuid + '\'' +
+                ", token='" + token + '\'' +
+                ", err_code=" + err_code +
+                ", err_msg='" + err_msg + '\'' +
+                '}';
+    }
 }

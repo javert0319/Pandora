@@ -4,7 +4,6 @@ import android.view.MenuItem
 import androidx.appcompat.widget.Toolbar
 import com.caesarlib.fram.R
 import com.caesarlib.res_tools.CSLog
-import com.gyf.immersionbar.ImmersionBar
 import com.gyf.immersionbar.OnKeyboardListener
 import com.gyf.immersionbar.ktx.immersionBar
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity
@@ -45,6 +44,6 @@ abstract class ToolBarActivity : RxAppCompatActivity(), OnKeyboardListener {
     }
 
     override fun onKeyboardChange(isPopup: Boolean, keyboardHeight: Int) {
-        CSLog.I("键盘改变,显示与否:$isPopup///高度:$keyboardHeight")
+        CSLog.d("键盘改变,显示与否:$isPopup///高度:$keyboardHeight")
     }
 }

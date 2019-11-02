@@ -108,7 +108,7 @@ class RegisterViewModel : BaseViewModel<RegisterView>() {
                         .show()
                 }
             }, {
-                CSLog.I(FramGroble.getValueString(R.string.res_tools_unknown_error))
+                CSLog.d(FramGroble.getValueString(R.string.res_tools_unknown_error))
             })
     }
 
