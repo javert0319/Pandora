@@ -14,4 +14,5 @@ public class YesApiServiceName {
     public static final String UPDATAEXTINFO= "App.User.UpdateExtInfo";//修改会员扩展信息
     public static final String UPLOADIMG= "App.CDN.UploadImg";//上传图片
     public static final String DeleteFile= "App.CDN.Delete";//删除图片或文件
+    public static final String LiveWeather= "App.Common_Weather.LiveWeather";//地区实时天气状况
 }

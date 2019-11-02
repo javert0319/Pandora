@@ -2,7 +2,6 @@ package com.caesar.pandora.main
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.fragment.app.Fragment
 import androidx.viewpager.widget.ViewPager
@@ -14,7 +13,6 @@ import com.caesar.user.fragment.MineFragment
 import com.caesarlib.customview.AwesomeFontTextView
 import com.caesarlib.fram.view.BaseSimpleActivity
 import com.google.android.material.tabs.TabLayout
-import com.gyf.immersionbar.ktx.immersionBar
 
 @Route(path = "/main/main")
 class MainActivity : BaseSimpleActivity() {

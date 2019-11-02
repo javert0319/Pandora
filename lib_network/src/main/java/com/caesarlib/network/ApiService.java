@@ -56,4 +56,5 @@ public interface ApiService {
     @Multipart
     @POST("?service="+YesApiServiceName.DeleteFile)
     Observable<BaseYesApiBean<NormalYesData>> DeleteFile(@PartMap Map<String, RequestBody> options);
+
 }
