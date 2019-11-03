@@ -5,10 +5,16 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
 import com.alibaba.android.arouter.facade.annotation.Route
+import com.caesarlib.fram.view.BaseActivity
 import com.caesarlib.fram.view.BaseSimpleActivity
+import com.caesarlib.fram.view.BaseView
 
 @Route(path = "/user/test")
-class DebugTestActivity : BaseSimpleActivity() {
+class DebugTestActivity : BaseActivity<BaseView,DebugTestViewModel>() {
+    override fun createViewModel(): DebugTestViewModel {
+      return DebugTestViewModel()
+    }
+
     override fun onFirstResume() {
     }
 
@@ -19,7 +25,7 @@ class DebugTestActivity : BaseSimpleActivity() {
         initToorBar("测试")
         findViewById<Button>(R.id.user_button).setOnClickListener {
 //            CSLog.d(FramGroble.getTopActivity()?.componentName?.className)
-            shgd()
+           mViewModel?.doNetTest()
         }
     }
 

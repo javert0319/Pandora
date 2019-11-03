@@ -3,7 +3,9 @@ package com.caesar.user
 import android.os.Bundle
 import androidx.appcompat.widget.AppCompatButton
 import com.alibaba.android.arouter.launcher.ARouter
+import com.caesarlib.fram.view.BaseActivity
 import com.caesarlib.fram.view.BaseSimpleActivity
+import com.caesarlib.fram.view.BaseView
 import com.caesarlib.network.NetFacede
 import com.caesarlib.network.ParamsFactary
 import com.caesarlib.network.YesApiServiceName
@@ -11,7 +13,11 @@ import com.caesarlib.res_tools.CaesarStringDealTool
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
-class DebugMainActivity : BaseSimpleActivity() {
+class DebugMainActivity : BaseActivity<BaseView,DebugMainViewModel>() {
+    override fun createViewModel(): DebugMainViewModel {
+        return DebugMainViewModel()
+    }
+
     override fun onFirstResume() {
 //        NetFacede.getInstance().defaultService.userLogin(
 //            ParamsFactary.userLoginARegisterParam(
@@ -44,11 +50,12 @@ class DebugMainActivity : BaseSimpleActivity() {
         setContentView(R.layout.user_activity_debug_main)
         initToorBar("用户模块", false)
         findViewById<AppCompatButton>(R.id.btn_test).setOnClickListener {
-            //            ARouter.getInstance().build("/user/test").navigation()
-            onFirstResume()
+                        ARouter.getInstance().build("/user/test").navigation()
+//            onFirstResume()
         }
         findViewById<AppCompatButton>(R.id.btn_login).setOnClickListener {
-            ARouter.getInstance().build("/user/login").navigation()
+//            ARouter.getInstance().build("/user/login").navigation()
+            mViewModel?.doNetTest()
         }
         findViewById<AppCompatButton>(R.id.btn_register).setOnClickListener {
             ARouter.getInstance().build("/user/register").greenChannel().navigation()
