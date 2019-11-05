@@ -16,4 +16,8 @@ abstract class BaseFragment<V, T : BaseViewModel<V>> : ToolBarFragment(), BaseVi
     //创建ViewModel
     protected abstract fun createViewModel(): T
 
+    override fun onHiddenChanged(hidden: Boolean) {
+        super.onHiddenChanged(hidden)
+    }
+
 }

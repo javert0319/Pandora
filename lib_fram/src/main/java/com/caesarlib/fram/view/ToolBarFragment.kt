@@ -47,11 +47,11 @@ abstract class ToolBarFragment : RxFragment(), OnKeyboardListener{
 
 
     fun onBackPressed(): Boolean {
-        val count = fragmentManager!!.backStackEntryCount
+        val count =activity!!.supportFragmentManager.backStackEntryCount
         if (count <= 1) {
             ActivityCompat.finishAfterTransition(activity as Activity)
         } else {
-            fragmentManager!!.popBackStack()
+            activity!!.supportFragmentManager.popBackStack()
         }
         return true
     }

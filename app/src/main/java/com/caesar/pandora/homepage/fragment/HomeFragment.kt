@@ -6,12 +6,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.caesar.pandora.R
-import com.caesarlib.fram.view.BaseSimpleFragment
+import com.caesarlib.fram.view.BaseFragment
+import com.caesarlib.fram.view.BaseView
 
 /**
  * 首页的碎片
  */
-class HomeFragment : BaseSimpleFragment() {
+class HomeFragment : BaseFragment<BaseView,HomeViewModel>() {
+    override fun createViewModel(): HomeViewModel {
+      return  HomeViewModel()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
