@@ -86,7 +86,7 @@ public class CityChoseFragmentDialog extends DialogFragment implements OnWheelCh
 
     private void initView(View view) {
         id_province = (WheelView) view.findViewById(R.id.id_province);
-        id_province.setViewAdapter(new ArrayWheelAdapter<>(ToolsGroble.getAppContext(), mProvinceDatas));
+        id_province.setViewAdapter(new ArrayWheelAdapter<>(ToolsGroble.INSTANCE.getAppContext(), mProvinceDatas));
         id_province.addChangingListener(this);
         id_province.setVisibleItems(7);
         id_city = (WheelView) view.findViewById(R.id.id_city);
@@ -128,7 +128,7 @@ public class CityChoseFragmentDialog extends DialogFragment implements OnWheelCh
     }
 
     protected void initProvinceDatas() {
-        AssetManager asset = ToolsGroble.getAppContext().getAssets();
+        AssetManager asset = ToolsGroble.INSTANCE.getAppContext().getAssets();
         try {
             InputStream input = asset.open("province_data.xml");
             // 创建一个解析xml的工厂对象
@@ -191,7 +191,7 @@ public class CityChoseFragmentDialog extends DialogFragment implements OnWheelCh
         if (cities == null) {
             cities = new String[]{""};
         }
-        id_city.setViewAdapter(new ArrayWheelAdapter<>(ToolsGroble.getAppContext(), cities));
+        id_city.setViewAdapter(new ArrayWheelAdapter<>(ToolsGroble.INSTANCE.getAppContext(), cities));
         id_city.setCurrentItem(0);
         updateAreas();
     }
@@ -207,7 +207,7 @@ public class CityChoseFragmentDialog extends DialogFragment implements OnWheelCh
         if (areas == null) {
             areas = new String[]{""};
         }
-        id_district.setViewAdapter(new ArrayWheelAdapter<String>(ToolsGroble.getAppContext(), areas));
+        id_district.setViewAdapter(new ArrayWheelAdapter<String>(ToolsGroble.INSTANCE.getAppContext(), areas));
         id_district.setCurrentItem(0);
     }
 

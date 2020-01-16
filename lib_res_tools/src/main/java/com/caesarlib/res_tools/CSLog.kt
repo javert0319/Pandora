@@ -26,7 +26,7 @@ object CSLog {
      * @param flag 标识
      * @param msg  内容
      */
-    fun d(flag: String?, msg: String?) {
+    fun d(flag: String?, msg: String) {
         if (CaesarStringDealTool.getStringLength(msg) > 3000) {
             d(flag, "该log的长度:" + CaesarStringDealTool.getStringLength(msg))
             val chunkCount = CaesarStringDealTool.getStringLength(msg) / 3000

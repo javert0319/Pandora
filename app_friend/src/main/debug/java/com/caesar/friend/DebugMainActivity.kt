@@ -14,19 +14,19 @@ import io.reactivex.schedulers.Schedulers
 
 class DebugMainActivity : BaseSimpleActivity() {
     override fun onFirstResume() {
-        NetFacede.getInstance().defaultService.userLogin(
-            ParamsFactary.userLoginARegisterParam(
-                YesApiServiceName.LOGIN,
-                "15757855271",
-                CaesarStringDealTool.MD5("123456")
-            )
-        ).subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe {
-                if (it.data.err_code == 0) {
-                    ValueUserData.setUserInfo(it.data.uuid, it.data.token)
-                }
-            }
+//        NetFacede.getInstance().defaultService.userLogin(
+//            ParamsFactary.userLoginARegisterParam(
+//                YesApiServiceName.LOGIN,
+//                "15757855271",
+//                CaesarStringDealTool.MD5("123456")
+//            )
+//        ).subscribeOn(Schedulers.io())
+//            .observeOn(AndroidSchedulers.mainThread())
+//            .subscribe {
+//                if (it.data.err_code == 0) {
+//                    ValueUserData.setUserInfo(it.data.uuid, it.data.token)
+//                }
+//            }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

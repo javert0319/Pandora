@@ -22,11 +22,11 @@ abstract class BaseViewModel<V> : AndroidViewModel(FramGroble.getApp() as Applic
 
     protected var mViewRef: Reference<V>? = null
 
-    fun attachView(view: V?) {
+    open fun attachView(view: V?) {
         mViewRef = WeakReference<V>(view)
     }
 
-    suspend fun <T> saveApiCall(call: suspend () -> BaseYesApiBean<T>): BaseYesApiBean<T> {
+    suspend fun <T> saveApiCall(call: suspend () -> BaseYesApiBean<T>?): BaseYesApiBean<T>? {
         return try {
             call.invoke()
         } catch (e: Exception) {
@@ -34,11 +34,11 @@ abstract class BaseViewModel<V> : AndroidViewModel(FramGroble.getApp() as Applic
         }
     }
 
-    fun getDefaultApiService(): ApiService {
-        return NetFacede.getInstance().defaultService
+    fun getDefaultApiService(): ApiService? {
+        return NetFacede.instance.defaultService
     }
 
-    fun detachView() {
+    open fun detachView() {
         CSLog.d("调用了detachView")
         mViewRef?.clear()
         mViewRef = null

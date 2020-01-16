@@ -91,7 +91,7 @@ class UserInfoActivity : BaseActivity<UserInfoView, UserInfoViewModel>(), TakePh
     }
 
     override fun takeSuccess(result: TResult?) {
-        CSLog.d("拍照成功", result?.toString())
+        CSLog.d("拍照成功", result?.toString().toString())
         mViewModel?.uploadPic(result)
     }
 

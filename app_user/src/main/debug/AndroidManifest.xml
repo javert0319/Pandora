@@ -13,33 +13,21 @@
         android:supportsRtl="true"
         android:theme="@style/res_tools_TranslucentTheme"
         tools:replace="android:label">
+        <activity android:name=".view.UserInfoActivity"></activity>
+        <activity android:name=".view.ProtocolActivity" />
+        <activity android:name=".view.RestPasswordActivity" />
         <activity
-                android:name=".view.UserInfoActivity"
-               ></activity>
-        <activity
-                android:name=".view.ProtocolActivity"
-               />
-        <activity
-                android:name=".view.RestPasswordActivity"
-                />
-        <activity
-                android:name=".DebugTestActivity"
-                android:windowSoftInputMode="adjustPan" />
-        <activity
-                android:name=".view.RegisterActivity"
-                />
-        <activity
-                android:name=".DebugMainActivity"
-               >
+            android:name=".DebugTestActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".view.RegisterActivity" />
+        <activity android:name=".DebugMainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-                android:name=".view.LoginActivity"
-                 />
+        <activity android:name=".view.LoginActivity" />
     </application>
 
 </manifest>

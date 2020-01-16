@@ -19,7 +19,7 @@ open class MyBaseApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         FramGroble.setApp(this)
-        ToolsGroble.setAppContext(this)
+        ToolsGroble.appContext = this
         registerActivityLifecycleCallbacks(mActivityLifecycleCall)
         if (BuildConfig.DEBUG) {
             ARouter.openLog()

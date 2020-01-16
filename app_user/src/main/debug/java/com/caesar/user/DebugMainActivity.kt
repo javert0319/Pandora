@@ -2,6 +2,7 @@ package com.caesar.user
 
 import android.os.Bundle
 import androidx.appcompat.widget.AppCompatButton
+import androidx.lifecycle.viewModelScope
 import com.alibaba.android.arouter.launcher.ARouter
 import com.caesarlib.fram.view.BaseActivity
 import com.caesarlib.fram.view.BaseSimpleActivity
@@ -9,7 +10,9 @@ import com.caesarlib.fram.view.BaseView
 import com.caesarlib.network.NetFacede
 import com.caesarlib.network.ParamsFactary
 import com.caesarlib.network.YesApiServiceName
+import com.caesarlib.res_tools.CSLog
 import com.caesarlib.res_tools.CaesarStringDealTool
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
@@ -19,30 +22,7 @@ class DebugMainActivity : BaseActivity<BaseView,DebugMainViewModel>() {
     }
 
     override fun onFirstResume() {
-//        NetFacede.getInstance().defaultService.userLogin(
-//            ParamsFactary.userLoginARegisterParam(
-//                YesApiServiceName.LOGIN,
-//                "15757855271",
-//                CaesarStringDealTool.MD5("123456")
-//            )
-//        ).subscribeOn(Schedulers.io())
-//            .observeOn(AndroidSchedulers.mainThread())
-//            .subscribe {
-//                if (it.data.err_code == 0) {
-//                    ValueUserData.setUserInfo(it.data.uuid, it.data.token)
-//                }
-//            }
-        GlobalScope.launch {
-//                val result = BaseRepository().safeApiCall {
-                NetFacede.getInstance().defaultService.userLogin(
-                    ParamsFactary.userLoginARegisterParam(
-                        YesApiServiceName.LOGIN,
-                        "15757855271",
-                        CaesarStringDealTool.MD5("123456")
-                    )
-                )
-//                }
-        }
+        mViewModel?.doNetTest()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -51,11 +31,9 @@ class DebugMainActivity : BaseActivity<BaseView,DebugMainViewModel>() {
         initToorBar("用户模块", false)
         findViewById<AppCompatButton>(R.id.btn_test).setOnClickListener {
                         ARouter.getInstance().build("/user/test").navigation()
-//            onFirstResume()
         }
         findViewById<AppCompatButton>(R.id.btn_login).setOnClickListener {
-//            ARouter.getInstance().build("/user/login").navigation()
-            mViewModel?.doNetTest()
+            ARouter.getInstance().build("/user/login").navigation()
         }
         findViewById<AppCompatButton>(R.id.btn_register).setOnClickListener {
             ARouter.getInstance().build("/user/register").greenChannel().navigation()

@@ -34,7 +34,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/res_tools_tb_show"
             app:netUrl="@{model.extInfo.headImg}" />
-
         <View
             android:id="@id/res_tools_view2"
             android:layout_width="match_parent"

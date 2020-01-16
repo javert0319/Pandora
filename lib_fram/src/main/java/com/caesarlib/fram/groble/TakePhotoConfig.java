@@ -134,7 +134,7 @@ public class TakePhotoConfig {
      * @return
      */
     private static Uri getPhotoUri() {
-        File file = new File(NormalStaticData.SDCardCacheSavePath, System.currentTimeMillis
+        File file = new File(NormalStaticData.INSTANCE.getSDCardCacheSavePath(), System.currentTimeMillis
                 () + ".jpg");
         return Uri.fromFile(file);
     }

@@ -46,13 +46,13 @@ public class MyConsTextView extends ConstraintLayout {
         }
         tvTitle = findViewById(R.id.customview_title);
         tvContext = findViewById(R.id.customview_context);
-        if (!CaesarStringDealTool.StringIsNull(titleTxt)) {
+        if (!CaesarStringDealTool.INSTANCE.StringIsNull(titleTxt)) {
             tvTitle.setText(titleTxt);
         }
-        if (!CaesarStringDealTool.StringIsNull(contexthintText)) {
+        if (!CaesarStringDealTool.INSTANCE.StringIsNull(contexthintText)) {
             tvContext.setHint(contexthintText);
         }
-        if (!CaesarStringDealTool.StringIsNull(contextTxt)) {
+        if (!CaesarStringDealTool.INSTANCE.StringIsNull(contextTxt)) {
             tvContext.setText(contextTxt);
         }
     }

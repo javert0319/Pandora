@@ -6,6 +6,7 @@ import android.text.InputType
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.ObservableField
+import androidx.lifecycle.viewModelScope
 import com.afollestad.materialdialogs.MaterialDialog
 import com.caesar.user.R
 import com.caesar.user.view.UserInfoView
@@ -26,6 +27,8 @@ import com.jph.takephoto.model.TResult
 import com.tbruyelle.rxpermissions2.RxPermissions
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import okhttp3.MediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -38,20 +41,25 @@ import java.io.File
  */
 class UserInfoViewModel : BaseViewModel<UserInfoView>() {
 
-    var takePhoto: TakePhoto? = null
+    lateinit var takePhoto: TakePhoto
     val extInfo = ObservableField<ExtInfoData>()
-    var oldImg = ""
+    var oldImg: String? = ""
     fun getUserInfo() {
-        NetFacede.getInstance().defaultService.userInfo(ParamsFactary.yesApiNormalParam(YesApiServiceName.PROFILE))
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe {
-                if (it.isSuccess) {
-                    extInfo.set(it.data.info.ext_info)
-                    oldImg = it.data.info.ext_info.headImg
+        viewModelScope.launch(Dispatchers.IO) {
+            val result = saveApiCall {
+                getDefaultApiService()?.userInfo(
+                    ParamsFactary.yesApiNormalParam(YesApiServiceName.PROFILE)
+                )
+            }
+            if (result?.data?.isCorrectCode()!!) {
+                extInfo.set(result.data?.info?.ext_info)
+                oldImg = result.data?.info?.ext_info?.headImg
+                launch(Dispatchers.Main){
                     mViewRef?.get()?.UserInfoUpdata()
+
                 }
             }
+        }
     }
 
     fun modifyHeadImg() {
@@ -73,25 +81,26 @@ class UserInfoViewModel : BaseViewModel<UserInfoView>() {
             modifyUserInfo()
             return
         }
-        NetFacede.getInstance().defaultService.DeleteFile(ParamsFactary.DeleteFileParam(CaesarStringDealTool.StrunScape(oldImg)))
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe({
-                CSLog.d("删除图片1")
-            }, {
-                CSLog.d("删除图片2")
+        viewModelScope.launch(Dispatchers.IO) {
+            val result = saveApiCall {
+                getDefaultApiService()?.DeleteFile(ParamsFactary.DeleteFileParam(CaesarStringDealTool.StrunScape(oldImg)))
+            }
+            if (result?.data?.isCorrectCode()!!) {
                 modifyUserInfo()
-            }, {
-                CSLog.d("删除图片3")
-                modifyUserInfo()
-            })
+            }
+        }
     }
 
     private fun showChoseDialog() {
         MaterialDialog.Builder(FramGroble.getTopActivity() as Context).title(R.string.res_tools_photo_chose)
             .items("相册", "拍照")
             .itemsCallbackSingleChoice(-1, object : MaterialDialog.ListCallbackSingleChoice {
-                override fun onSelection(dialog: MaterialDialog?, itemView: View?, which: Int, text: CharSequence?): Boolean {
+                override fun onSelection(
+                    dialog: MaterialDialog?,
+                    itemView: View?,
+                    which: Int,
+                    text: CharSequence?
+                ): Boolean {
                     when (text) {
                         "相册" -> {
                             TakePhotoConfig.takePhotoByAlbumACrop(takePhoto, 1080, 1080)
@@ -108,25 +117,23 @@ class UserInfoViewModel : BaseViewModel<UserInfoView>() {
     }
 
     fun uploadPic(result: TResult?) {
-        val file = File(result?.image?.compressPath)
-        val requestBody = RequestBody.create(
-            MediaType.parse("image/jpg"),
-            file
-        )
-        val body = MultipartBody.Part.createFormData("file", file.name, requestBody)
-        NetFacede.getInstance().defaultService.upLoadImg(ParamsFactary.yesApiNormalParam(YesApiServiceName.UPLOADIMG), body)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe({
-                if (it.isSuccess) {
-                    extInfo?.get()?.headImg = it?.data?.url
-                    DeleteOldImg()
-                }
-            }, {
-                CSLog.d("出现异常" + it.message)
-            }, {
-                CSLog.d("结束")
-            })
+
+        viewModelScope.launch(Dispatchers.IO) {
+            val file = File(result?.image?.compressPath)
+            val requestBody = RequestBody.create(
+                MediaType.parse("image/jpg"),
+                file
+            )
+            val body = MultipartBody.Part.createFormData("file", file.name, requestBody)
+            val result = saveApiCall {
+                getDefaultApiService()?.upLoadImg(ParamsFactary.yesApiNormalParam(YesApiServiceName.UPLOADIMG), body)
+            }
+            if (result?.data?.isCorrectCode()!!) {
+                extInfo.get()?.headImg = result.data?.url
+                DeleteOldImg()
+            }
+
+        }
     }
 
     fun onItemClick(v: View) {
@@ -135,7 +142,11 @@ class UserInfoViewModel : BaseViewModel<UserInfoView>() {
                 modifyHeadImg()
             }
             R.id.res_tools_view3 -> {
-                showInputDialog(R.string.res_tools_nickname, FramGroble.getValueString(R.string.res_tools_nickname_input), extInfo.get()?.nickName)
+                showInputDialog(
+                    R.string.res_tools_nickname,
+                    FramGroble.getValueString(R.string.res_tools_nickname_input),
+                    extInfo.get()?.nickName
+                )
             }
             R.id.res_tools_view4 -> {
                 showAgeChoseDialog()
@@ -144,12 +155,13 @@ class UserInfoViewModel : BaseViewModel<UserInfoView>() {
                 showSexChoseDialog()
             }
             R.id.res_tools_view6 -> {
-                CityChoseDialogWorker.getInstance().showCityChoseDialog((FramGroble.getTopActivity() as AppCompatActivity).fragmentManager) {
-                    extInfo.get()?.province = it.province
-                    extInfo.get()?.city = it.city
-                    extInfo.get()?.area = it.district
-                    modifyUserInfo()
-                }
+                CityChoseDialogWorker.getInstance()
+                    .showCityChoseDialog((FramGroble.getTopActivity() as AppCompatActivity).fragmentManager) {
+                        extInfo.get()?.province = it.province
+                        extInfo.get()?.city = it.city
+                        extInfo.get()?.area = it.district
+                        modifyUserInfo()
+                    }
             }
             R.id.res_tools_btn_go -> {
 
@@ -158,16 +170,18 @@ class UserInfoViewModel : BaseViewModel<UserInfoView>() {
     }
 
     fun modifyUserInfo() {
-        NetFacede.getInstance().defaultService.modifyUserInfo(ParamsFactary.mofidyUserInfoParam(extInfo.get()))
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe {
-                if (it.isSuccess) {
-                    extInfo.set(it.data.ext_info)
-                    oldImg = it.data.ext_info.headImg
+        viewModelScope.launch(Dispatchers.IO) {
+            val result = saveApiCall {
+                getDefaultApiService()?.modifyUserInfo(ParamsFactary.mofidyUserInfoParam(extInfo.get()))
+            }
+            if (result?.data?.isCorrectCode()!!) {
+                extInfo.set(result.data?.ext_info)
+                oldImg = result.data?.ext_info?.headImg
+                launch(Dispatchers.Main){
                     mViewRef?.get()?.UserInfoUpdata()
                 }
             }
+        }
     }
 
     fun showInputDialog(titleStr: Int, hintTxt: String?, preText: String?) {
@@ -195,11 +209,18 @@ class UserInfoViewModel : BaseViewModel<UserInfoView>() {
         }
         MaterialDialog.Builder(FramGroble.getTopActivity() as Context).title(R.string.res_tools_age)
             .items(age)
-            .itemsCallbackSingleChoice(extInfo.get()?.age as Int - 18, object : MaterialDialog.ListCallbackSingleChoice {
-                override fun onSelection(dialog: MaterialDialog?, itemView: View?, which: Int, text: CharSequence?): Boolean {
-                    return true
-                }
-            })
+            .itemsCallbackSingleChoice(
+                extInfo.get()?.age as Int - 18,
+                object : MaterialDialog.ListCallbackSingleChoice {
+                    override fun onSelection(
+                        dialog: MaterialDialog?,
+                        itemView: View?,
+                        which: Int,
+                        text: CharSequence?
+                    ): Boolean {
+                        return true
+                    }
+                })
             .alwaysCallSingleChoiceCallback()
             .positiveText(R.string.res_tools_confirm)
             .onPositive { dialog, _ ->
@@ -214,9 +235,17 @@ class UserInfoViewModel : BaseViewModel<UserInfoView>() {
 
     fun showSexChoseDialog() {
         MaterialDialog.Builder(FramGroble.getTopActivity() as Context).title(R.string.res_tools_sex)
-            .items(FramGroble.getValueString(R.string.res_tools_man), FramGroble.getValueString(R.string.res_tools_woman))
+            .items(
+                FramGroble.getValueString(R.string.res_tools_man),
+                FramGroble.getValueString(R.string.res_tools_woman)
+            )
             .itemsCallbackSingleChoice(extInfo.get()?.sex as Int - 1, object : MaterialDialog.ListCallbackSingleChoice {
-                override fun onSelection(dialog: MaterialDialog?, itemView: View?, which: Int, text: CharSequence?): Boolean {
+                override fun onSelection(
+                    dialog: MaterialDialog?,
+                    itemView: View?,
+                    which: Int,
+                    text: CharSequence?
+                ): Boolean {
                     return true
                 }
             })

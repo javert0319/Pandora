@@ -1,16 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/res_tools_cWithe"
-    tools:context=".homepage.fragment.HomeFragment">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <include
-        android:id="@id/res_tools_tb_show"
-        layout="@layout/fram_layout_toolbar" />
+    <data>
+
+        <variable
+            name="vm"
+            type="com.caesar.pandora.homepage.fragment.HomeViewModel" />
+        <import type="com.caesarlib.brvahbinding.CSBrvahLayoutManager" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/res_tools_cWithe"
+        android:orientation="vertical"
+        tools:context=".homepage.fragment.HomeFragment">
+
+        <include
+            android:id="@id/res_tools_tb_show"
+            layout="@layout/fram_layout_toolbar" />
 
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:cs_brvah_emptyClickListener="@{vm.emptyOnClickListener}"
+            app:cs_brvah_emptyResId="@{vm.emptyResId}"
+            app:cs_brvah_layoutManager="@{CSBrvahLayoutManager.grid(3)}"
+            app:cs_brvah_spansize="@{vm.spanSizeLookup}"
+            app:cs_brvah_adapter="@{vm.bindingAdapter}" />
 
-</LinearLayout>
+
+    </LinearLayout>
+</layout>

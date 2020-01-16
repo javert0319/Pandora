@@ -25,7 +25,7 @@ interface ApiService {
 
     @Multipart
     @POST("?service=" + YesApiServiceName.REGISTER)
-    fun userRegister(@PartMap options: HashMap<String, RequestBody>): Observable<BaseYesApiBean<UserRegisterData>>
+    suspend fun userRegister(@PartMap options: HashMap<String, RequestBody>): BaseYesApiBean<UserRegisterData>
 
 //    @Multipart
 //    @POST("?service=" + YesApiServiceName.LOGIN)
@@ -37,26 +37,26 @@ interface ApiService {
 
     @Multipart
     @POST("?service=" + YesApiServiceName.CAPTCREATE)
-    fun CaptchaCreate(@PartMap options: HashMap<String, RequestBody>): Observable<BaseYesApiBean<CaptchaData>>
+    suspend fun CaptchaCreate(@PartMap options: HashMap<String, RequestBody>): BaseYesApiBean<CaptchaData>
 
     @Multipart
     @POST("?service=" + YesApiServiceName.CAPTVERIFY)
-    fun CaptchaVerify(@PartMap options: HashMap<String, RequestBody>): Observable<BaseYesApiBean<UserLoginData>>
+    suspend fun CaptchaVerify(@PartMap options: HashMap<String, RequestBody>): BaseYesApiBean<UserLoginData>
 
     @Multipart
     @POST("?service=" + YesApiServiceName.PROFILE)
-    fun userInfo(@PartMap options: HashMap<String, RequestBody>): Observable<BaseYesApiBean<InfoData>>
+    suspend  fun userInfo(@PartMap options: HashMap<String, RequestBody>): BaseYesApiBean<InfoData>
 
     @Multipart
     @POST("?service=" + YesApiServiceName.UPDATAEXTINFO)
-    fun modifyUserInfo(@PartMap options: HashMap<String, RequestBody>): Observable<BaseYesApiBean<UserInfoData>>
+    suspend fun modifyUserInfo(@PartMap options: HashMap<String, RequestBody>): BaseYesApiBean<UserInfoData>
 
     @Multipart
     @POST("?service=" + YesApiServiceName.UPLOADIMG)
-    fun upLoadImg(@PartMap options: HashMap<String, RequestBody>, @Part file: MultipartBody.Part): Observable<BaseYesApiBean<NormalYesData>>
+    suspend fun upLoadImg(@PartMap options: HashMap<String, RequestBody>, @Part file: MultipartBody.Part): BaseYesApiBean<NormalYesData>
 
     @Multipart
     @POST("?service=" + YesApiServiceName.DeleteFile)
-    fun DeleteFile(@PartMap options: HashMap<String, RequestBody>): Observable<BaseYesApiBean<NormalYesData>>
+    suspend  fun DeleteFile(@PartMap options: HashMap<String, RequestBody>): BaseYesApiBean<NormalYesData>
 
 }

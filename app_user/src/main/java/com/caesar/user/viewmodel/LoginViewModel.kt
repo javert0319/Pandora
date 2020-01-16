@@ -1,13 +1,23 @@
 package com.caesar.user.viewmodel
 
 import androidx.databinding.ObservableField
+import androidx.lifecycle.viewModelScope
 import com.alibaba.android.arouter.launcher.ARouter
 import com.caesar.user.R
 import com.caesarlib.fram.groble.FramGroble
 import com.caesarlib.fram.view.BaseView
 import com.caesarlib.fram.viewmodel.BaseViewModel
+import com.caesarlib.network.NetFacede
+import com.caesarlib.network.ParamsFactary
+import com.caesarlib.network.YesApiServiceName
 import com.caesarlib.res_tools.AppNormalTool
+import com.caesarlib.res_tools.CSLog
 import com.caesarlib.res_tools.CaesarStringDealTool
+import com.caesarlib.userinfo.ValueUserData
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 /**
  * created by Caesar on 2019/4/8
@@ -24,20 +34,24 @@ class LoginViewModel : BaseViewModel<BaseView>() {
                 FramGroble.getValueString(R.string.res_tools_user_pass_none)
             )
             else -> {
-//                NetFacede.getInstance().defaultService.userLogin(
-//                    ParamsFactary.userLoginARegisterParam(
-//                        YesApiServiceName.LOGIN,
-//                        userName.get(),
-//                        CaesarStringDealTool.MD5(passWord.get())
-//                    )
-//                ).subscribeOn(Schedulers.io())
-//                    .observeOn(AndroidSchedulers.mainThread())
-//                    .subscribe {
-//                        if (it.data.err_code == 0) {
-//                            ValueUserData.setUserInfo(it.data.uuid,it.data.token)
-//                            FramGroble.getTopActivity()?.finish()
-//                        }
-//                    }
+                viewModelScope.launch(Dispatchers.IO) {
+                    val result = saveApiCall {
+                        getDefaultApiService()?.userLogin(
+                            ParamsFactary.userLoginARegisterParam(
+                                YesApiServiceName.LOGIN,
+                                userName.get(),
+                                CaesarStringDealTool.MD5(passWord.get())
+                            )
+                        )
+                    }
+                    if (result?.data?.err_code==0) {
+                        ValueUserData.setUserInfo(result.data?.uuid, result.data?.token)
+                        launch(Dispatchers.Main){
+                            FramGroble.getTopActivity()?.finish()
+                        }
+                    }
+                }
+
             }
         }
     }

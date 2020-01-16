@@ -1,6 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 android {
     compileSdkVersion rootProject.ext.android.compileSdkVersion
     defaultConfig {
@@ -47,5 +48,6 @@ dependencies {
     api rootProject.ext.dependencies.Material_Dialog
     api rootProject.ext.dependencies.glide
     api rootProject.ext.dependencies.rxpermissions
+    api rootProject.ext.dependencies.BRVAH
     annotationProcessor  rootProject.ext.dependencies.glide_compiler
 }
