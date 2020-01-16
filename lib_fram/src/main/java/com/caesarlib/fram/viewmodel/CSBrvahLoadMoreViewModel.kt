@@ -3,14 +3,12 @@ package com.caesarlib.fram.viewmodel
 import androidx.databinding.ObservableBoolean
 
 import com.caesarlib.fram.R
-import com.caesarlib.fram.groble.CSEmptyViewType
+import com.caesarlib.fram.global.CSEmptyViewType
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.loadmore.LoadMoreView
 
 import io.reactivex.Flowable
 import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.functions.Action
-import io.reactivex.functions.Consumer
 import io.reactivex.schedulers.Schedulers
 
 

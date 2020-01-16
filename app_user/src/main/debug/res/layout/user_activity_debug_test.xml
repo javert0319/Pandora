@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="vm"
             type="com.caesar.user.DebugTestViewModel" />
@@ -31,6 +32,9 @@
             android:id="@id/res_tools_view1"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            app:cs_brvah_adapter="@{vm.bindingAdapter}"
+            app:cs_brvah_emptyClickListener="@{vm.emptyOnClickListener}"
+            app:cs_brvah_emptyResId="@{vm.emptyResId}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/res_tools_view2"
             app:layout_constraintVertical_bias="0.955"

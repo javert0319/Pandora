@@ -19,30 +19,15 @@ class DebugTestActivity : BaseActivity<BaseView, DebugTestViewModel>() {
     }
 
     override fun onFirstResume() {
+        mViewModel?.load()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding =
             DataBindingUtil.setContentView<UserActivityDebugTestBinding>(this, R.layout.user_activity_debug_test)
-//        setContentView(R.layout.user_activity_debug_test)
-        initToorBar("测试")
-        findViewById<Button>(R.id.res_tools_btn_go).setOnClickListener {
-                        CSLog.d("nihao")
-           mViewModel?.doNetTest()
-        }
-        res_tools_view1.layoutManager = LinearLayoutManager(this)
         binding.vm = mViewModel
-        res_tools_view2.setOnClickListener {
-//            res_tools_view1.adapter?.notifyDataSetChanged()
-            mViewModel?.name?.set("dhdgdgdg")
-        }
-        res_tools_view3.setOnClickListener {
-            user_textview.text = "123"
-        }
-        res_tools_view4.setOnClickListener {
-            CSLog.d("zhgi:"+ mViewModel?.name?.get())
-        }
+        initToorBar("测试")
     }
 
 

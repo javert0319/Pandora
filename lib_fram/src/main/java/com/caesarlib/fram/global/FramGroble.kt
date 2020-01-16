@@ -1,4 +1,4 @@
-package com.caesarlib.fram.groble
+package com.caesarlib.fram.global
 
 import android.app.Activity
 import android.app.Application

@@ -1,27 +1,33 @@
 package com.caesar.pandora.main
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import androidx.appcompat.widget.AppCompatTextView
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.viewpager.widget.ViewPager
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.caesar.friend.fragment.FriendFragment
 import com.caesar.pandora.R
+import com.caesar.pandora.databinding.ActivityMainBinding
 import com.caesar.pandora.homepage.fragment.HomeFragment
 import com.caesar.user.fragment.MineFragment
-import com.caesarlib.customview.AwesomeFontTextView
-import com.caesarlib.fram.view.BaseSimpleActivity
+import com.caesarlib.fram.view.BaseActivity
+import com.caesarlib.fram.view.BaseView
 import com.google.android.material.tabs.TabLayout
 
 @Route(path = "/main/main")
-class MainActivity : BaseSimpleActivity() {
+class MainActivity : BaseActivity<BaseView, MainViewModel>() {
+
+    override fun createViewModel(): MainViewModel {
+        return MainViewModel()
+    }
+
     private lateinit var tabView: TabLayout
     private lateinit var vpView: ViewPager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        val binding = DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
+        binding.vm = mViewModel
         tabView = findViewById(R.id.res_tools_view1)
         vpView = findViewById(R.id.res_tools_view2)
     }
@@ -35,17 +41,9 @@ class MainActivity : BaseSimpleActivity() {
         vpView.offscreenPageLimit = 3
         tabView.setupWithViewPager(vpView)
         tabView.removeAllTabs()
-        val tabs = resources.getStringArray(R.array.tabs)
-        val tabFonts = resources.getStringArray(R.array.tabs_font)
-        for (num in 0..2) {
-            val tabChild = tabView.newTab()
-            val viewChild =
-                LayoutInflater.from(this).inflate(R.layout.layout_main_tab, tabView, false)
-            viewChild.findViewById<AwesomeFontTextView>(R.id.res_tools_tab1).text  = tabFonts[num]
-            viewChild.findViewById<AppCompatTextView>(R.id.res_tools_tab2).text = tabs[num]
-            tabChild.customView = viewChild
-            tabView.addTab(tabChild)
-        }
-
+        val tabs = resources.getStringArray(R.array.tabs).toList()
+        val tabFonts = resources.getStringArray(R.array.tabs_font).toList()
+        mViewModel?.mtabs?.set(tabs)
+        mViewModel?.mtabFonts?.set(tabFonts)
     }
 }

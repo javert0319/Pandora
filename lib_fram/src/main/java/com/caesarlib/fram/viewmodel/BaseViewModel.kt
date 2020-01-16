@@ -3,11 +3,10 @@ package com.caesarlib.fram.viewmodel
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
-import com.caesarlib.fram.groble.FramGroble
+import com.caesarlib.fram.global.FramGroble
 import com.caesarlib.network.ApiService
 import com.caesarlib.network.NetFacede
 import com.caesarlib.network.bean.base.BaseYesApiBean
-import com.caesarlib.network.bean.yesapi.UserLoginData
 import com.caesarlib.res_tools.CSLog
 import kotlinx.coroutines.cancel
 import java.lang.ref.Reference
@@ -30,12 +29,19 @@ abstract class BaseViewModel<V> : AndroidViewModel(FramGroble.getApp() as Applic
         return try {
             call.invoke()
         } catch (e: Exception) {
+            CSLog.d("出现了异步异常")
+            onNetFail()
             BaseYesApiBean()
         }
     }
 
     fun getDefaultApiService(): ApiService? {
         return NetFacede.instance.defaultService
+    }
+
+    //异步操作出现异常,调用
+   open fun onNetFail(){
+
     }
 
     open fun detachView() {

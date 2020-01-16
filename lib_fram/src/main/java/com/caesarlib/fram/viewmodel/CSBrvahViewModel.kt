@@ -4,7 +4,6 @@ import android.view.View
 import androidx.databinding.ObservableArrayList
 import androidx.databinding.ObservableBoolean
 import androidx.databinding.ObservableInt
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.caesarlib.brvahbinding.CSBindingAdapter
@@ -12,7 +11,7 @@ import com.caesarlib.brvahbinding.CSBravhItemBinding
 import com.caesarlib.brvahbinding.CSItemBindingAdapter
 import com.caesarlib.brvahbinding.CSLog
 import com.caesarlib.fram.R
-import com.caesarlib.fram.groble.CSEmptyViewType
+import com.caesarlib.fram.global.CSEmptyViewType
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.chad.library.adapter.base.animation.BaseAnimation
@@ -168,6 +167,22 @@ abstract class CSBrvahViewModel<V, B> : BaseViewModel<V>() {
                 isRefreshing.set(false)
                 onDataLoadComplete()
             })
+    }
+
+    open suspend fun load(lists: List<B>){
+//        viewModelScope.launch(Dispatchers.Main){
+            addItems(lists)
+            emptyResId.set(getEmptyViewRes(CSEmptyViewType.EMPTY))
+            isRefreshing.set(false)
+            onDataLoadComplete()
+//        }
+    }
+
+    override fun onNetFail() {
+        super.onNetFail()
+        CSLog.Print("出现异常")
+        emptyResId.set(getEmptyViewRes(CSEmptyViewType.ERROR))
+        isRefreshing.set(false)
     }
 
     override fun detachView() {

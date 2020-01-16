@@ -1,4 +1,4 @@
-package com.caesarlib.fram.groble
+package com.caesarlib.fram.global
 
 /**
  * EmptyView 类型

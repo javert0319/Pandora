@@ -11,10 +11,9 @@ import com.afollestad.materialdialogs.MaterialDialog
 import com.caesar.user.R
 import com.caesar.user.view.UserInfoView
 import com.caesarlib.customview.citychose.CityChoseDialogWorker
-import com.caesarlib.fram.groble.FramGroble
-import com.caesarlib.fram.groble.TakePhotoConfig
+import com.caesarlib.fram.global.FramGroble
+import com.caesarlib.fram.global.TakePhotoConfig
 import com.caesarlib.fram.viewmodel.BaseViewModel
-import com.caesarlib.network.NetFacede
 import com.caesarlib.network.ParamsFactary
 import com.caesarlib.network.YesApiServiceName
 import com.caesarlib.network.bean.yesapi.ExtInfoData
@@ -25,8 +24,6 @@ import com.caesarlib.res_tools.SDCardTool
 import com.jph.takephoto.app.TakePhoto
 import com.jph.takephoto.model.TResult
 import com.tbruyelle.rxpermissions2.RxPermissions
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import okhttp3.MediaType

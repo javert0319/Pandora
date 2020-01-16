@@ -8,7 +8,7 @@ import androidx.multidex.MultiDex
 import com.alibaba.android.arouter.launcher.ARouter
 import com.caesarlib.fram.BuildConfig
 import com.caesarlib.res_tools.ToolsGroble
-import com.caesarlib.fram.groble.FramGroble
+import com.caesarlib.fram.global.FramGroble
 
 /**
  * application的父类

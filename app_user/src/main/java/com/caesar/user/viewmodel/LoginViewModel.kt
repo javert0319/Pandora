@@ -4,18 +4,14 @@ import androidx.databinding.ObservableField
 import androidx.lifecycle.viewModelScope
 import com.alibaba.android.arouter.launcher.ARouter
 import com.caesar.user.R
-import com.caesarlib.fram.groble.FramGroble
+import com.caesarlib.fram.global.FramGroble
 import com.caesarlib.fram.view.BaseView
 import com.caesarlib.fram.viewmodel.BaseViewModel
-import com.caesarlib.network.NetFacede
 import com.caesarlib.network.ParamsFactary
 import com.caesarlib.network.YesApiServiceName
 import com.caesarlib.res_tools.AppNormalTool
-import com.caesarlib.res_tools.CSLog
 import com.caesarlib.res_tools.CaesarStringDealTool
 import com.caesarlib.userinfo.ValueUserData
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 

@@ -7,7 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.afollestad.materialdialogs.MaterialDialog
 import com.alibaba.android.arouter.launcher.ARouter
 import com.caesar.user.R
-import com.caesarlib.fram.groble.FramGroble
+import com.caesarlib.fram.global.FramGroble
 import com.caesarlib.fram.view.BaseView
 import com.caesarlib.fram.viewmodel.BaseViewModel
 import com.caesarlib.network.ParamsFactary

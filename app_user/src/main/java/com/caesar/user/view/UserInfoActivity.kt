@@ -7,7 +7,7 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.caesar.user.R
 import com.caesar.user.databinding.UserActivityUserInfoBinding
 import com.caesar.user.viewmodel.UserInfoViewModel
-import com.caesarlib.fram.groble.FramGroble
+import com.caesarlib.fram.global.FramGroble
 import com.caesarlib.fram.view.BaseActivity
 import com.caesarlib.res_tools.CSLog
 import com.jph.takephoto.app.TakePhoto
