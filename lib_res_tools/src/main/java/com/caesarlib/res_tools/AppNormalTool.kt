@@ -88,8 +88,8 @@ object AppNormalTool {
      * @param dipValue （DisplayMetrics类中属性density）
      * @return
      */
-    fun dip2px(context: Context, dipValue: Float): Int {
-        val scale = context.resources.displayMetrics.density
+    fun dip2px(dipValue: Float): Int {
+        val scale = ToolsGroble.appContext.resources.displayMetrics.density
         return (dipValue * scale + 0.5f).toInt()
     }
 

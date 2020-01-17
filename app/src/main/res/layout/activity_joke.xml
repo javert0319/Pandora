@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.caesar.pandora.function.JokeViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".function.JokeActivity">
+
+        <include
+            android:id="@id/res_tools_tb_show"
+            layout="@layout/fram_layout_toolbar"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipeRefreshLayout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:OnRefreshListener="@{vm.refreshListener}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/res_tools_tb_show"
+            app:refreshing="@{vm.isRefreshing}">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                app:cs_brvah_Decoration="@{vm.itemDecoration}"
+                app:cs_brvah_adapter="@{vm.bindingAdapter}"
+                app:cs_brvah_emptyClickListener="@{vm.emptyOnClickListener}"
+                app:cs_brvah_emptyResId="@{vm.emptyResId}"
+                app:cs_brvah_loadMoreEnable="@{vm.loadMoreEnable}"
+                app:cs_brvah_loadMoreEnd="@{vm.loadMoreEnd}"
+                app:cs_brvah_loadMoreListener="@{vm.loadMoreListener}"
+                app:cs_brvah_loadMoreSuccess="@{vm.loadMoreSuccess}"
+                app:cs_brvah_loadMoreView="@{vm.loadMoreView}" />
+
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatingActionButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{()->vm.reload()}"
+            android:layout_margin="10dp"
+            android:clickable="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:srcCompat="@android:drawable/ic_menu_rotate" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

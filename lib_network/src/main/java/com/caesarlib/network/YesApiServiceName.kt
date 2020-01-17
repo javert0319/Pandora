@@ -14,5 +14,6 @@ object YesApiServiceName {
     const val UPDATAEXTINFO = "App.User.UpdateExtInfo"//修改会员扩展信息
     const val UPLOADIMG = "App.CDN.UploadImg"//上传图片
     const val DeleteFile = "App.CDN.Delete"//删除图片或文件
+    const val OKIJOKE = "App.Common_Joke.RandOne"//随机一个笑话
     const val LiveWeather = "App.Common_Weather.LiveWeather"//地区实时天气状况
 }

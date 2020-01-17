@@ -44,6 +44,9 @@
     <string name="res_tools_home">首页</string>
     <string name="res_tools_friend">朋友</string>
     <string name="res_tools_mine">我的</string>
+    <string name="res_tools_more">更多</string>
+    <string name="res_tools_joke">每日一笑</string>
+
 
     <!--基本数据-->
     <string name="res_tools_no_data">暂无数据</string>

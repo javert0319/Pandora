@@ -30,6 +30,7 @@
             app:cs_brvah_emptyResId="@{vm.emptyResId}"
             app:cs_brvah_layoutManager="@{CSBrvahLayoutManager.grid(3)}"
             app:cs_brvah_spansize="@{vm.spanSizeLookup}"
+            app:cs_brvah_Decoration="@{vm.itemDecoration}"
             app:cs_brvah_adapter="@{vm.bindingAdapter}" />
 
 

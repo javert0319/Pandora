@@ -27,10 +27,6 @@ interface ApiService {
     @POST("?service=" + YesApiServiceName.REGISTER)
     suspend fun userRegister(@PartMap options: HashMap<String, RequestBody>): BaseYesApiBean<UserRegisterData>
 
-//    @Multipart
-//    @POST("?service=" + YesApiServiceName.LOGIN)
-//    fun userLogin(@PartMap options: Map<String, RequestBody>): Observable<BaseYesApiBean<UserLoginData>>
-
     @Multipart
     @POST("?service=" + YesApiServiceName.LOGIN)
     suspend fun userLogin(@PartMap options: HashMap<String, RequestBody>): BaseYesApiBean<UserLoginData>
@@ -45,7 +41,7 @@ interface ApiService {
 
     @Multipart
     @POST("?service=" + YesApiServiceName.PROFILE)
-    suspend  fun userInfo(@PartMap options: HashMap<String, RequestBody>): BaseYesApiBean<InfoData>
+    suspend fun userInfo(@PartMap options: HashMap<String, RequestBody>): BaseYesApiBean<InfoData>
 
     @Multipart
     @POST("?service=" + YesApiServiceName.UPDATAEXTINFO)
@@ -57,6 +53,11 @@ interface ApiService {
 
     @Multipart
     @POST("?service=" + YesApiServiceName.DeleteFile)
-    suspend  fun DeleteFile(@PartMap options: HashMap<String, RequestBody>): BaseYesApiBean<NormalYesData>
+    suspend fun DeleteFile(@PartMap options: HashMap<String, RequestBody>): BaseYesApiBean<NormalYesData>
+
+    @Multipart
+    @POST("?service=" + YesApiServiceName.OKIJOKE)
+    suspend fun OkiJoke(@PartMap options: HashMap<String, RequestBody>): BaseYesApiBean<JokeData>
+
 
 }

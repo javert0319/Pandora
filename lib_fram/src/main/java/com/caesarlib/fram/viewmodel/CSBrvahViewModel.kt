@@ -4,6 +4,7 @@ import android.view.View
 import androidx.databinding.ObservableArrayList
 import androidx.databinding.ObservableBoolean
 import androidx.databinding.ObservableInt
+import androidx.lifecycle.viewModelScope
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.caesarlib.brvahbinding.CSBindingAdapter
@@ -22,6 +23,9 @@ import io.reactivex.Flowable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ensureActive
+import kotlinx.coroutines.launch
 import java.util.*
 
 
@@ -119,6 +123,7 @@ abstract class CSBrvahViewModel<V, B> : BaseViewModel<V>() {
     open fun reload() {
         dispose()
         items.clear()
+        isRefreshing.set(true)
         load()
     }
 
@@ -134,13 +139,15 @@ abstract class CSBrvahViewModel<V, B> : BaseViewModel<V>() {
 
 
     fun addItems(newData: List<B>?) {
-        if (newData != null && newData.size > 0) {
-            items.addAll(newData)
+        if (newData != null && newData.isNotEmpty()) {
+            viewModelScope.launch(Dispatchers.Main) {
+                items.addAll(newData)
+            }
         }
     }
 
     fun addItems(newData: List<B>?, index: Int) {
-        if (newData != null && newData.size > 0) {
+        if (newData != null && newData.isNotEmpty()) {
             items.addAll(index, newData)
         }
     }
@@ -169,17 +176,14 @@ abstract class CSBrvahViewModel<V, B> : BaseViewModel<V>() {
             })
     }
 
-    open suspend fun load(lists: List<B>){
-//        viewModelScope.launch(Dispatchers.Main){
+    open suspend fun load(lists: List<B>?){
             addItems(lists)
             emptyResId.set(getEmptyViewRes(CSEmptyViewType.EMPTY))
             isRefreshing.set(false)
             onDataLoadComplete()
-//        }
     }
 
     override fun onNetFail() {
-        super.onNetFail()
         CSLog.Print("出现异常")
         emptyResId.set(getEmptyViewRes(CSEmptyViewType.ERROR))
         isRefreshing.set(false)
@@ -207,11 +211,11 @@ abstract class CSBrvahViewModel<V, B> : BaseViewModel<V>() {
     abstract fun load()
 
     // ------------- 重要 --------------------
-    fun onCustomAnimation(): BaseAnimation? {
+   open fun onCustomAnimation(): BaseAnimation? {
         return null
     }
 
-    fun onitemDecoration(): RecyclerView.ItemDecoration? {
+   open fun onitemDecoration(): RecyclerView.ItemDecoration? {
         return null
     }
 
@@ -219,11 +223,11 @@ abstract class CSBrvahViewModel<V, B> : BaseViewModel<V>() {
         return null
     }
 
-    fun onHeadBinding(): ArrayList<CSBravhItemBinding<*>>? {
+    open fun onHeadBinding(): ArrayList<CSBravhItemBinding<*>>? {
         return null
     }
 
-    fun onFootBinding(): ArrayList<CSBravhItemBinding<*>>? {
+    open fun onFootBinding(): ArrayList<CSBravhItemBinding<*>>? {
         return null
     }
 

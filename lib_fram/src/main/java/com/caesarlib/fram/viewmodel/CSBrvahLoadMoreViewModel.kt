@@ -1,6 +1,7 @@
 package com.caesarlib.fram.viewmodel
 
 import androidx.databinding.ObservableBoolean
+import androidx.lifecycle.viewModelScope
 
 import com.caesarlib.fram.R
 import com.caesarlib.fram.global.CSEmptyViewType
@@ -10,9 +11,11 @@ import com.chad.library.adapter.base.loadmore.LoadMoreView
 import io.reactivex.Flowable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 
-abstract class CSBrvahLoadMoreViewModel<BASE_VIEW, BEAN> : CSBrvahViewModel<BASE_VIEW, BEAN> {
+abstract class CSBrvahLoadMoreViewModel<V, B> : CSBrvahViewModel<V, B> {
     //加载更多布局,可以自定义
     lateinit var loadMoreView: LoadMoreView
     //加载更多结束
@@ -43,7 +46,7 @@ abstract class CSBrvahLoadMoreViewModel<BASE_VIEW, BEAN> : CSBrvahViewModel<BASE
         this.mPage = defaultStart
     }
 
-    override fun attachView(view: BASE_VIEW?) {
+    override fun attachView(view: V?) {
         super.attachView(view)
         loadMoreView = onLoadMoreView()
         loadMoreListener = onLoadMoreListener()
@@ -93,9 +96,9 @@ abstract class CSBrvahLoadMoreViewModel<BASE_VIEW, BEAN> : CSBrvahViewModel<BASE
     }
 
 
-    fun setData(dat: List<BEAN>) {
+    fun setData(dat: List<B>?) {
         addItems(dat)
-        if (dat.size < pageSize) {
+        if (dat?.size!! < pageSize) {
             isLoadEndTag = true
             loadMoreEnd.set(mPage == defaultStart)
             loadMoreEnd.notifyChange()
@@ -106,7 +109,7 @@ abstract class CSBrvahLoadMoreViewModel<BASE_VIEW, BEAN> : CSBrvahViewModel<BASE
 
     }
 
-    override fun load(flowable: Flowable<List<BEAN>>) {
+    override fun load(flowable: Flowable<List<B>>) {
         if (isRefreshing.get()) {
             emptyResId.set(getEmptyViewRes(CSEmptyViewType.REFRESH))
         } else {
@@ -123,11 +126,29 @@ abstract class CSBrvahLoadMoreViewModel<BASE_VIEW, BEAN> : CSBrvahViewModel<BASE
                 }
                 isRefreshing.set(false)
             }, {
-                //                        loadMoreEnable.set(true);
                 emptyResId.set(getEmptyViewRes(CSEmptyViewType.EMPTY))
                 isRefreshing.set(false)
                 mPage++
+                onDataLoadComplete()
             })
+    }
+
+    override fun onNetFail() {
+        if (isRefreshing.get() || mPage == defaultStart) {
+            emptyResId.set(getEmptyViewRes(CSEmptyViewType.ERROR))
+        } else {
+            loadMoreSuccess.set(false)
+            loadMoreSuccess.notifyChange()
+        }
+        isRefreshing.set(false)
+    }
+    override suspend fun load(lists: List<B>?) {
+        setData(lists)
+        emptyResId.set(getEmptyViewRes(CSEmptyViewType.EMPTY))
+        isRefreshing.set(false)
+        mPage++
+        onDataLoadComplete()
+
     }
 
     abstract fun load(mPage: Int)

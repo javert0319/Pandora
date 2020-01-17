@@ -143,4 +143,11 @@ object ParamsFactary {
         return params
     }
 
+    fun okiJoke(num:Int?): HashMap<String, RequestBody>{
+        val params = yesApiBaseParams(YesApiServiceName.OKIJOKE)
+        params["num"] = createRequestBody(num?.toString())
+        params["sign"] = createRequestBody(CreateSign(num?.toString(),YesApiServiceName.OKIJOKE))
+        return params
+    }
+
 }

@@ -11,8 +11,8 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="20dp">
+        android:minHeight="50dp"
+        android:layout_height="wrap_content">
 
         <TextView
             android:layout_width="0dp"
@@ -20,11 +20,25 @@
             android:layout_weight="1"
             android:text="@{data.strData}" />
 
-        <com.caesarlib.customview.AwesomeFontTextView
-            android:layout_width="40dp"
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:gravity="center"
-            android:text="@string/res_tools_font_refresh" />
+            android:orientation="vertical">
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{()->data.goJokeList()}"
+                android:padding="5dp"
+                android:text="@string/res_tools_more" />
+
+            <com.caesarlib.customview.AwesomeFontTextView
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:onClick="@{()->data.getJokeData()}"
+                android:text="@string/res_tools_font_refresh" />
+
+        </LinearLayout>
     </LinearLayout>
 </layout>

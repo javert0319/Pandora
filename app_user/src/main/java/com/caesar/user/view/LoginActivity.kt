@@ -46,9 +46,9 @@ class LoginActivity : BaseActivity<BaseView, LoginViewModel>() {
     override fun onKeyboardChange(isPopup: Boolean, keyboardHeight: Int) {
         val layoutParams = res_tools_view1.layoutParams as ConstraintLayout.LayoutParams
         if (isPopup) {
-            layoutParams.topMargin = AppNormalTool.dip2px(this, 10f)
+            layoutParams.topMargin = AppNormalTool.dip2px( 10f)
         } else {
-            layoutParams.topMargin = AppNormalTool.dip2px(this, 120f)
+            layoutParams.topMargin = AppNormalTool.dip2px( 120f)
         }
         res_tools_view1.layoutParams = layoutParams
 
