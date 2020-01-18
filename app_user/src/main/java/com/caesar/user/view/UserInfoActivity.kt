@@ -23,7 +23,8 @@ import kotlinx.android.synthetic.main.user_activity_user_info.*
 
 
 @Route(path = "/user/info")
-class UserInfoActivity : BaseActivity<UserInfoView, UserInfoViewModel>(), TakePhoto.TakeResultListener, InvokeListener, UserInfoView {
+class UserInfoActivity : BaseActivity<UserInfoView, UserInfoViewModel>(), TakePhoto.TakeResultListener, InvokeListener,
+    UserInfoView {
     private lateinit var binding: UserActivityUserInfoBinding
 
     private var takePhoto: TakePhoto? = null
@@ -45,12 +46,10 @@ class UserInfoActivity : BaseActivity<UserInfoView, UserInfoViewModel>(), TakePh
     }
 
     override fun UserInfoUpdata() {
-        res_tools_view3.upDataContxt(mViewModel?.extInfo?.get()?.nickName)
-        res_tools_view4.upDataContxt(if (mViewModel?.extInfo?.get()?.age == 0) "" else mViewModel?.extInfo?.get()?.age.toString())
+        res_tools_view3.upDataContxt(mViewModel?.extInfo?.get()?.yesapi_nickname)
+        res_tools_view4.upDataContxt(if (mViewModel?.extInfo?.get()?.yesapi_age == 0) "" else mViewModel?.extInfo?.get()?.yesapi_age.toString())
         res_tools_view5.upDataContxt(
-            if (mViewModel?.extInfo?.get()?.sex == 0) "" else if (mViewModel?.extInfo?.get()?.sex == 1) FramGroble.getValueString(R.string.res_tools_man) else FramGroble.getValueString(
-                R.string.res_tools_woman
-            )
+            if (mViewModel?.extInfo?.get()?.yesapi_sex==null) "" else mViewModel?.extInfo?.get()?.yesapi_sex
         )
         res_tools_view6.upDataContxt(mViewModel?.extInfo?.get()?.province + mViewModel?.extInfo?.get()?.city + mViewModel?.extInfo?.get()?.area)
     }

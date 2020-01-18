@@ -50,7 +50,7 @@ class UserInfoViewModel : BaseViewModel<UserInfoView>() {
             }
             if (result?.data?.isCorrectCode()!!) {
                 extInfo.set(result.data?.info?.ext_info)
-                oldImg = result.data?.info?.ext_info?.headImg
+                oldImg = result.data?.info?.ext_info?.yesapi_avatar
                 launch(Dispatchers.Main){
                     mViewRef?.get()?.UserInfoUpdata()
 
@@ -126,7 +126,7 @@ class UserInfoViewModel : BaseViewModel<UserInfoView>() {
                 getDefaultApiService()?.upLoadImg(ParamsFactary.yesApiNormalParam(YesApiServiceName.UPLOADIMG), body)
             }
             if (result?.data?.isCorrectCode()!!) {
-                extInfo.get()?.headImg = result.data?.url
+                extInfo.get()?.yesapi_avatar = result.data?.url
                 DeleteOldImg()
             }
 
@@ -142,7 +142,7 @@ class UserInfoViewModel : BaseViewModel<UserInfoView>() {
                 showInputDialog(
                     R.string.res_tools_nickname,
                     FramGroble.getValueString(R.string.res_tools_nickname_input),
-                    extInfo.get()?.nickName
+                    extInfo.get()?.yesapi_nickname
                 )
             }
             R.id.res_tools_view4 -> {
@@ -173,7 +173,7 @@ class UserInfoViewModel : BaseViewModel<UserInfoView>() {
             }
             if (result?.data?.isCorrectCode()!!) {
                 extInfo.set(result.data?.ext_info)
-                oldImg = result.data?.ext_info?.headImg
+                oldImg = result.data?.ext_info?.yesapi_avatar
                 launch(Dispatchers.Main){
                     mViewRef?.get()?.UserInfoUpdata()
                 }
@@ -188,7 +188,7 @@ class UserInfoViewModel : BaseViewModel<UserInfoView>() {
                 if (CaesarStringDealTool.StringIsNull(input.toString())) {
                     AppNormalTool.showToast(hintTxt)
                 } else {
-                    extInfo.get()?.nickName = input.toString()
+                    extInfo.get()?.yesapi_nickname = input.toString()
                     modifyUserInfo()
                 }
             }
@@ -207,7 +207,7 @@ class UserInfoViewModel : BaseViewModel<UserInfoView>() {
         MaterialDialog.Builder(FramGroble.getTopActivity() as Context).title(R.string.res_tools_age)
             .items(age)
             .itemsCallbackSingleChoice(
-                extInfo.get()?.age as Int - 18,
+                extInfo.get()?.yesapi_age as Int - 18,
                 object : MaterialDialog.ListCallbackSingleChoice {
                     override fun onSelection(
                         dialog: MaterialDialog?,
@@ -221,7 +221,7 @@ class UserInfoViewModel : BaseViewModel<UserInfoView>() {
             .alwaysCallSingleChoiceCallback()
             .positiveText(R.string.res_tools_confirm)
             .onPositive { dialog, _ ->
-                extInfo.get()?.age = dialog.selectedIndex + 18
+                extInfo.get()?.yesapi_age = dialog.selectedIndex + 18
                 modifyUserInfo()
             }
             .negativeText(R.string.res_tools_cancle)
@@ -236,20 +236,12 @@ class UserInfoViewModel : BaseViewModel<UserInfoView>() {
                 FramGroble.getValueString(R.string.res_tools_man),
                 FramGroble.getValueString(R.string.res_tools_woman)
             )
-            .itemsCallbackSingleChoice(extInfo.get()?.sex as Int - 1, object : MaterialDialog.ListCallbackSingleChoice {
-                override fun onSelection(
-                    dialog: MaterialDialog?,
-                    itemView: View?,
-                    which: Int,
-                    text: CharSequence?
-                ): Boolean {
-                    return true
-                }
-            })
+            .itemsCallbackSingleChoice(-1
+            ) { dialog, itemView, which, text -> true }
             .alwaysCallSingleChoiceCallback()
             .positiveText(R.string.res_tools_confirm)
             .onPositive { dialog, which ->
-                extInfo.get()?.sex = dialog.selectedIndex + 1
+                extInfo.get()?.yesapi_sex = dialog.items!![dialog.selectedIndex].toString()
                 modifyUserInfo()
             }
             .negativeText(R.string.res_tools_cancle)
