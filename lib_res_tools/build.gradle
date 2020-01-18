@@ -46,8 +46,10 @@ dependencies {
     api rootProject.ext.dependencies.kotlinx_coroutines_android
     api rootProject.ext.dependencies.material
     api rootProject.ext.dependencies.Material_Dialog
-    api rootProject.ext.dependencies.glide
+//    api rootProject.ext.dependencies.glide
+//    annotationProcessor  rootProject.ext.dependencies.glide_compiler
+    //目前的glide版本跟图片加载工具的glide有冲突,暂时屏蔽掉,后续修复
     api rootProject.ext.dependencies.rxpermissions
     api rootProject.ext.dependencies.BRVAH
-    annotationProcessor  rootProject.ext.dependencies.glide_compiler
+    api rootProject.ext.dependencies.takephoto_library
 }

@@ -33,7 +33,6 @@ dependencies {
     api rootProject.ext.dependencies.immersionbar
     api rootProject.ext.dependencies.immersionbar_ktx
     api rootProject.ext.dependencies.Multidex
-    api rootProject.ext.dependencies.takephoto_library
     api rootProject.ext.dependencies.lifecycle_extensions
     api rootProject.ext.dependencies.lifecycle_viewmodel_ktx
     api rootProject.ext.dependencies.csbrvahbinding
