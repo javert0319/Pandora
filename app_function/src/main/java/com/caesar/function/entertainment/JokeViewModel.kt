@@ -1,9 +1,9 @@
-package com.caesar.pandora.function
+package com.caesar.function.entertainment
 
 import androidx.lifecycle.viewModelScope
 import androidx.recyclerview.widget.RecyclerView
-import com.caesar.pandora.BR
-import com.caesar.pandora.R
+import com.caesar.function.BR
+import com.caesar.function.R
 import com.caesarlib.brvahbinding.CSBravhItemBinding
 import com.caesarlib.fram.decoration.NormaltemDecoration
 import com.caesarlib.fram.view.BaseView
@@ -17,7 +17,7 @@ import java.util.*
 class JokeViewModel : CSBrvahLoadMoreViewModel<BaseView, String>() {
     override fun getItemBinding(): HashMap<Int, CSBravhItemBinding<Any>> {
         val map = HashMap<Int, CSBravhItemBinding<Any>>()
-        map[0] = CSBravhItemBinding(BR.data, R.layout.layout_item_jokes)
+        map[0] = CSBravhItemBinding(BR.data, R.layout.function_layout_item_jokes)
         return map
     }
 

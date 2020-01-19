@@ -1,1 +1,1 @@
-include ':app', ':app_user', ':lib_fram', ':lib_network', ':lib_res_tools', ':lib_userinfo', ':lib_customview', ':app_friend'
+include ':app', ':app_user', ':lib_fram', ':lib_network', ':lib_res_tools', ':lib_userinfo', ':lib_customview', ':app_friend', ':app_function'

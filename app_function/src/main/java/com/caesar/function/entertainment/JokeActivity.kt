@@ -1,14 +1,14 @@
-package com.caesar.pandora.function
+package com.caesar.function.entertainment
 
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.caesar.pandora.R
-import com.caesar.pandora.databinding.ActivityJokeBinding
+import com.caesar.function.R
+import com.caesar.function.databinding.FunctionActivityJokeBinding
 import com.caesarlib.fram.view.BaseActivity
 import com.caesarlib.fram.view.BaseView
 
-@Route(path = "/main/joke")
+@Route(path = "/function/joke")
 class JokeActivity : BaseActivity<BaseView, JokeViewModel>() {
     override fun createViewModel(): JokeViewModel {
         return JokeViewModel()
@@ -20,7 +20,7 @@ class JokeActivity : BaseActivity<BaseView, JokeViewModel>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val binding = DataBindingUtil.setContentView<ActivityJokeBinding>(this, R.layout.activity_joke)
+        val binding = DataBindingUtil.setContentView<FunctionActivityJokeBinding>(this, R.layout.function_activity_joke)
         binding.vm = mViewModel
         initToorBar(getString(R.string.res_tools_joke))
     }

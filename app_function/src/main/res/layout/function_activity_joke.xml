@@ -7,7 +7,7 @@
 
         <variable
             name="vm"
-            type="com.caesar.pandora.function.JokeViewModel" />
+            type="com.caesar.function.entertainment.JokeViewModel" />
 
     </data>
 

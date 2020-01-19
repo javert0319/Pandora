@@ -53,6 +53,7 @@ dependencies {
     if (!rootProject.ext.is_build_module) {
         api project(path: ':app_user')
         api project(path: ':app_friend')
+        api project(path: ':app_function')
     }
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     kapt rootProject.ext.dependencies.arouter_compiler
