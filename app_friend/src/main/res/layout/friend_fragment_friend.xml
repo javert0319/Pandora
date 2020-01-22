@@ -1,14 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".fragment.FriendFragment">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <include
-        android:id="@id/res_tools_tb_show"
-        layout="@layout/fram_layout_toolbar" />
+    <data>
+        <variable
+            name="userinfo"
+            type="com.caesarlib.userinfo.ValueUserData" />
 
+    </data>
 
-</LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".fragment.FriendFragment">
+
+        <include
+            android:id="@id/res_tools_tb_show"
+            layout="@layout/fram_layout_toolbar" />
+
+        <TextView
+            android:text="@{userinfo.userToken}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+</layout>

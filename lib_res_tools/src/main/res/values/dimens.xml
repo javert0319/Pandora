@@ -6,6 +6,8 @@
     <dimen name="res_tools_normal_normal_txt_size">17sp</dimen>
     <dimen name="res_tools_normal_big_txt_size">22sp</dimen>
     <dimen name="res_tools_normal_headimage_size">120dp</dimen>
+    <dimen name="res_tools_normal_line_padding">10dp</dimen>
+    <dimen name="res_tools_mine_line_padding">15dp</dimen>
 
     <dimen name="res_tools_normal_view_size">50dp</dimen>
     <dimen name="res_tools_normal_view_size_small">25dp</dimen>

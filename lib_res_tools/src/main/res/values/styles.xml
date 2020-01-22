@@ -12,7 +12,7 @@
 
     </style>
 
-    <style name="res_tools_FullScreenTheme" parent="res_tools_AppTheme" >
+    <style name="res_tools_FullScreenTheme" parent="res_tools_AppTheme">
         <item name="android:windowFullscreen">true</item>
     </style>
 
@@ -31,6 +31,17 @@
 
     <style name="res_tools_normal_text_theme_style">
         <item name="android:textColor">@color/res_tools_selector_text_theme</item>
+    </style>
+
+    <style name="res_tools_normal_text_mine_item">
+        <item name="android:gravity">center</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">@dimen/res_tools_mine_line_padding</item>
+        <item name="android:textSize">@dimen/res_tools_normal_normal_txt_size</item>
+        <item name="android:background">@color/res_tools_cWithe</item>
+        <item name="android:layout_marginTop">1dp</item>
+
     </style>
 
 </resources>

@@ -4,6 +4,7 @@ import androidx.databinding.ObservableField
 import com.alibaba.android.arouter.launcher.ARouter
 import com.caesarlib.fram.viewmodel.NormalNetModel
 import com.caesarlib.network.ParamsFactary
+import com.caesarlib.userinfo.ValueUserData
 import com.chad.library.adapter.base.entity.MultiItemEntity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -35,6 +36,7 @@ class HomeNorTypeData(var type: Int = 0, var viewScope: CoroutineScope? = null) 
     }
 
     fun goJokeList(){
+        ValueUserData.nickName.set("123dfrf")
         ARouter.getInstance().build("/function/joke").navigation()
     }
 }

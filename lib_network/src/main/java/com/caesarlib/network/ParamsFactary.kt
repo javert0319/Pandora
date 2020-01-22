@@ -55,9 +55,9 @@ object ParamsFactary {
      */
     fun yesApiNormalParam(apiname: String?): HashMap<String, RequestBody> {
         val params = yesApiBaseParams(apiname)
-        params["uuid"] = createRequestBody(ValueUserData.userUuid)
-        params["token"] = createRequestBody(ValueUserData.userToken)
-        params["sign"] = createRequestBody(CreateSign(apiname, ValueUserData.userToken, ValueUserData.userUuid))
+        params["uuid"] = createRequestBody(ValueUserData.userUuid.get())
+        params["token"] = createRequestBody(ValueUserData.userToken.get())
+        params["sign"] = createRequestBody(CreateSign(apiname, ValueUserData.userToken.get(), ValueUserData.userUuid.get()))
         return params
     }
 
@@ -114,15 +114,15 @@ object ParamsFactary {
      */
     fun mofidyUserInfoParam(extInfoData: ExtInfoData?): HashMap<String, RequestBody> {
         val params = yesApiBaseParams(YesApiServiceName.UPDATAEXTINFO)
-        params["uuid"] = createRequestBody(ValueUserData.userUuid)
-        params["token"] = createRequestBody(ValueUserData.userToken)
+        params["uuid"] = createRequestBody(ValueUserData.userUuid.get())
+        params["token"] = createRequestBody(ValueUserData.userToken.get())
         params["ext_info"] = createRequestBody(extInfoData?.toJson())
         params["sign"] = createRequestBody(
             CreateSign(
                 extInfoData?.toJson(),
                 YesApiServiceName.UPDATAEXTINFO,
-                ValueUserData.userToken,
-                ValueUserData.userUuid
+                ValueUserData.userToken.get(),
+                ValueUserData.userUuid.get()
             )
         )
         return params
@@ -137,9 +137,9 @@ object ParamsFactary {
     fun DeleteFileParam(fileUrl: String?): HashMap<String, RequestBody> {
         val params = yesApiBaseParams(YesApiServiceName.DeleteFile)
         params["url"] = createRequestBody(fileUrl)
-        params["uuid"] = createRequestBody(ValueUserData.userUuid)
-        params["token"] = createRequestBody(ValueUserData.userToken)
-        params["sign"] = createRequestBody(CreateSign(YesApiServiceName.DeleteFile, ValueUserData.userToken, fileUrl, ValueUserData.userUuid))
+        params["uuid"] = createRequestBody(ValueUserData.userUuid.get())
+        params["token"] = createRequestBody(ValueUserData.userToken.get())
+        params["sign"] = createRequestBody(CreateSign(YesApiServiceName.DeleteFile, ValueUserData.userToken.get(), fileUrl, ValueUserData.userUuid.get()))
         return params
     }
 

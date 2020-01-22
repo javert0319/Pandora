@@ -6,7 +6,7 @@ import com.caesarlib.fram.viewmodel.BaseViewModel
 abstract class BaseFragment<V, T : BaseViewModel<V>> : ToolBarFragment(), BaseView {
 
     protected var mViewModel: T? = null //ViewModel对象
-
+    private var isFirstVisibleHint = true
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mViewModel = createViewModel() //创建ViewModel
@@ -15,6 +15,18 @@ abstract class BaseFragment<V, T : BaseViewModel<V>> : ToolBarFragment(), BaseVi
 
     //创建ViewModel
     protected abstract fun createViewModel(): T
+
+    override fun setUserVisibleHint(isVisibleToUser: Boolean) {
+        if (isVisibleToUser && isFirstVisibleHint) {
+            isFirstVisibleHint = false
+            onFirstUserVisibleHint()
+        }
+        super.setUserVisibleHint(isVisibleToUser)
+    }
+
+    open fun onFirstUserVisibleHint() {
+
+    }
 
     override fun onHiddenChanged(hidden: Boolean) {
         super.onHiddenChanged(hidden)

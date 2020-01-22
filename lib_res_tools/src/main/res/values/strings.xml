@@ -27,7 +27,7 @@
     <string name="res_tools_confirm_to_login">点击确认,前往登陆</string>
     <string name="res_tools_check_number">验证码</string>
     <string name="res_tools_input_check_number">请输入验证码</string>
-    <string name="res_tools_userinfo">用户信息</string>
+    <string name="res_tools_userinfo">我的信息</string>
     <string name="res_tools_photo_chose">照片选择</string>
     <string name="res_tools_default_context">默认内容</string>
     <string name="res_tools_nickname">昵称</string>
@@ -46,6 +46,7 @@
     <string name="res_tools_mine">我的</string>
     <string name="res_tools_more">更多</string>
     <string name="res_tools_joke">每日一笑</string>
+    <string name="res_tools_nouser">请登录或注册</string>
 
 
     <!--基本数据-->

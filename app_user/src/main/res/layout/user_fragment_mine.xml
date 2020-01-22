@@ -1,11 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".fragment.MineFragment">
-    <include
-        android:id="@id/res_tools_tb_show"
-        layout="@layout/fram_layout_toolbar" />
-</LinearLayout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.caesar.user.fragment.MineViewModel" />
+
+        <variable
+            name="userinfo"
+            type="com.caesarlib.userinfo.ValueUserData" />
+
+        <import type="com.caesar.user.R" />
+
+        <import type="com.caesarlib.userinfo.UserDeal" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        tools:context=".fragment.MineFragment">
+
+        <include
+            android:id="@id/res_tools_tb_show"
+            layout="@layout/fram_layout_toolbar" />
+
+        <com.caesarlib.customview.MyRoundView
+            android:layout_width="@dimen/res_tools_normal_headimage_size"
+            android:layout_height="@dimen/res_tools_normal_headimage_size"
+            android:layout_marginTop="30dp"
+            app:customview_border_color="@color/res_tools_AppTheme"
+            app:customview_border_width="4dp"
+            app:defaultImgRes="@{R.mipmap.user_icon_default_headimg}"
+            app:netUrl="@{userinfo.avatarImg}" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@{UserDeal.INSTANCE.UserIsNull(userinfo.nickName)}" />
+
+        <TextView
+            style="@style/res_tools_normal_text_mine_item"
+            android:layout_marginTop="20dp"
+            android:text="@string/res_tools_userinfo" />
+        <TextView
+            style="@style/res_tools_normal_text_mine_item"
+            android:text="@string/res_tools_signout" />
+    </LinearLayout>
+</layout>
