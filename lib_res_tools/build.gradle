@@ -52,4 +52,7 @@ dependencies {
     api rootProject.ext.dependencies.rxpermissions
     api rootProject.ext.dependencies.BRVAH
     api rootProject.ext.dependencies.takephoto_library
+    api rootProject.ext.dependencies.koin_android
+    api rootProject.ext.dependencies.koin_androidx_scope
+    api rootProject.ext.dependencies.koin_androidx_viewmodel
 }

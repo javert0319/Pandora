@@ -62,5 +62,10 @@ ext {
             retrofit_adapter_rxjava   : "com.squareup.retrofit2:adapter-rxjava2:2.5.0",
             leakcanary                : "com.squareup.leakcanary:leakcanary-android:1.6.3",
             leakcanary_no_op          : 'com.squareup.leakcanary:leakcanary-android-no-op:1.6.3',
+            /*依赖注入框架Koin*/
+            koin_android              : 'org.koin:koin-android:2.1.0-alpha-3',
+            koin_androidx_scope       : 'org.koin:koin-androidx-scope:2.1.0-alpha-3',
+            koin_androidx_viewmodel   : 'org.koin:koin-androidx-viewmodel:2.1.0-alpha-3',
+            koin_androidx_fragment    : 'org.koin:koin-androidx-fragment:2.1.0-alpha-3',
     ]
 }
