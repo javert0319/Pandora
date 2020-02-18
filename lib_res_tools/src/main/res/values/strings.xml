@@ -47,6 +47,7 @@
     <string name="res_tools_more">更多</string>
     <string name="res_tools_joke">每日一笑</string>
     <string name="res_tools_nouser">请登录或注册</string>
+    <string name="res_tools_nocity">当前暂无选择城市</string>
 
 
     <!--基本数据-->

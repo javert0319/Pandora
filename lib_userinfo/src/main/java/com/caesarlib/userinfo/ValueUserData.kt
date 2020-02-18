@@ -7,13 +7,16 @@ import androidx.databinding.ObservableField
  * email : 15757855271@163.com
  */
 object ValueUserData {
-    var userUuid = ObservableField<String>("")
-    var userToken =ObservableField<String>("")
-    var nickName = ObservableField<String>("")
-    var avatarImg = ObservableField<String>("")
-    var province = ObservableField<String>("")
-    var city = ObservableField<String>("")
-    var area = ObservableField<String>("")
+    val userUuid = ObservableField<String>("")
+    val userToken = ObservableField<String>("")
+    val nickName = ObservableField<String>("")
+    val avatarImg = ObservableField<String>("")
+
+
+    //当前的地址信息
+    val province = ObservableField<String>()
+    val city = ObservableField<String>()
+    val area = ObservableField<String>()
 
 
     fun setUserInfo(userUuid: String?, userToken: String?) {

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="vm"
             type="com.caesar.pandora.main.MainViewModel" />
@@ -21,19 +22,24 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/res_tools_normal_view_size"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:tabIndicatorHeight="0dp"
-            app:tabsshow ="@{vm.mtabs}"
             app:tabFontsshow="@{vm.mtabFonts}"
+            app:tabIndicatorHeight="0dp"
             app:tabMode="fixed"
+            app:tabsshow="@{vm.mtabs}"
             tools:layout_editor_absoluteX="28dp" />
 
-
-        <androidx.viewpager.widget.ViewPager
+        <ImageView
             android:id="@id/res_tools_view2"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="1px"
             android:background="@color/res_tools_color_d"
-            app:layout_constraintBottom_toTopOf="@id/res_tools_view1"
+            app:layout_constraintBottom_toTopOf="@id/res_tools_view1" />
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@id/res_tools_view3"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@id/res_tools_view2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="30dp"
+    android:background="@drawable/sp_normal_gray_shaw_fillet"
+    android:gravity="center"
+    android:paddingBottom="2dp"
+    android:paddingLeft="5dp"
+    android:paddingRight="5dp"
+    android:paddingTop="2dp"
+    android:textColor="@color/res_tools_cBlack"
+    />
+
+

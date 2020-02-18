@@ -45,4 +45,14 @@ public class CityChoseData  {
     public void setDistrict(String district) {
         this.district = district;
     }
+
+    @Override
+    public String toString() {
+        return "CityChoseData{" +
+                "country='" + country + '\'' +
+                ", province='" + province + '\'' +
+                ", city='" + city + '\'' +
+                ", district='" + district + '\'' +
+                '}';
+    }
 }

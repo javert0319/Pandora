@@ -44,6 +44,19 @@ public class CityChoseDialogWorker {
         }
     }
 
+    //默认为0,1是只有省份,2是省份加城市
+    public void showCityChoseDialog(FragmentManager fragmentManager, int type, onCityDataListen listen) {
+        if (fragmentManager == null) {
+            return;
+        }
+        this.listen = listen;
+        if (cityChoseFragmentDialog == null) {
+            cityChoseFragmentDialog = new CityChoseFragmentDialog();
+            cityChoseFragmentDialog.setType(type);
+            cityChoseFragmentDialog.show(fragmentManager, CITYCHOSE_DIALOG);
+        }
+    }
+
     /**
      * 数据返回
      *

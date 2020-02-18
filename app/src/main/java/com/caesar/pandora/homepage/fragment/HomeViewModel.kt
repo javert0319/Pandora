@@ -50,7 +50,7 @@ class HomeViewModel : CSBrvahViewModel<BaseView, MultiItemEntity>() {
             val das = ArrayList<MultiItemEntity>()
             val norD = HomeNorTypeData(1, viewModelScope)
             das.add(norD)
-            val wD = HomeWeatherData("地区", "温度", "风速")
+            val wD = HomeWeatherData(viewModelScope)
             das.add(wD)
 //            das.add(HomeNorTypeData("功能1"))
 //            das.add(HomeNorTypeData("功能2"))

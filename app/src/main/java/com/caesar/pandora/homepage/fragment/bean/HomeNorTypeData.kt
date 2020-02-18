@@ -36,7 +36,6 @@ class HomeNorTypeData(var type: Int = 0, var viewScope: CoroutineScope? = null) 
     }
 
     fun goJokeList(){
-        ValueUserData.nickName.set("123dfrf")
-        ARouter.getInstance().build("/function/joke").navigation()
+        ARouter.getInstance().build("/function/joke").greenChannel().navigation()
     }
 }

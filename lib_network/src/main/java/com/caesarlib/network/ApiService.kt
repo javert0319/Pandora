@@ -59,5 +59,9 @@ interface ApiService {
     @POST("?service=" + YesApiServiceName.OKIJOKE)
     suspend fun OkiJoke(@PartMap options: HashMap<String, RequestBody>): BaseYesApiBean<JokeData>
 
+    @Multipart
+    @POST("?service=" + YesApiServiceName.LiveWeather)
+    suspend fun LiveWeather(@PartMap options: HashMap<String, RequestBody>): BaseYesApiBean<WeatherData>
+
 
 }

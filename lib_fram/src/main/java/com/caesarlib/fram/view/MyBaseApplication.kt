@@ -7,8 +7,15 @@ import android.os.Bundle
 import androidx.multidex.MultiDex
 import com.alibaba.android.arouter.launcher.ARouter
 import com.caesarlib.fram.BuildConfig
-import com.caesarlib.res_tools.ToolsGroble
 import com.caesarlib.fram.global.FramGroble
+import com.caesarlib.res_tools.SharedPreferencesTool
+import com.caesarlib.res_tools.ToolsGroble
+import com.caesarlib.userinfo.ValueUserData
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import org.koin.android.ext.koin.androidContext
+import org.koin.core.context.startKoin
+import org.koin.dsl.module
 
 /**
  * application的父类
@@ -26,6 +33,12 @@ open class MyBaseApplication : Application() {
             ARouter.openDebug()
         }
         ARouter.init(this)
+        startKoin {
+            androidContext(this@MyBaseApplication)
+            modules(framModule)
+        }
+        initSomeData()
+
     }
 
     override fun attachBaseContext(base: Context?) {
@@ -60,6 +73,15 @@ open class MyBaseApplication : Application() {
         }
 
         override fun onActivityDestroyed(activity: Activity) {
+        }
+    }
+    val framModule = module {
+
+    }
+
+    fun initSomeData() {
+        GlobalScope.launch {
+            ValueUserData.city.set(SharedPreferencesTool.getLocationCity())
         }
     }
 }

@@ -57,7 +57,8 @@ object ParamsFactary {
         val params = yesApiBaseParams(apiname)
         params["uuid"] = createRequestBody(ValueUserData.userUuid.get())
         params["token"] = createRequestBody(ValueUserData.userToken.get())
-        params["sign"] = createRequestBody(CreateSign(apiname, ValueUserData.userToken.get(), ValueUserData.userUuid.get()))
+        params["sign"] =
+            createRequestBody(CreateSign(apiname, ValueUserData.userToken.get(), ValueUserData.userUuid.get()))
         return params
     }
 
@@ -139,14 +140,34 @@ object ParamsFactary {
         params["url"] = createRequestBody(fileUrl)
         params["uuid"] = createRequestBody(ValueUserData.userUuid.get())
         params["token"] = createRequestBody(ValueUserData.userToken.get())
-        params["sign"] = createRequestBody(CreateSign(YesApiServiceName.DeleteFile, ValueUserData.userToken.get(), fileUrl, ValueUserData.userUuid.get()))
+        params["sign"] = createRequestBody(
+            CreateSign(
+                YesApiServiceName.DeleteFile,
+                ValueUserData.userToken.get(),
+                fileUrl,
+                ValueUserData.userUuid.get()
+            )
+        )
         return params
     }
 
-    fun okiJoke(num:Int?): HashMap<String, RequestBody>{
+    //获取笑话
+    fun okiJoke(num: Int?): HashMap<String, RequestBody> {
         val params = yesApiBaseParams(YesApiServiceName.OKIJOKE)
         params["num"] = createRequestBody(num?.toString())
-        params["sign"] = createRequestBody(CreateSign(num?.toString(),YesApiServiceName.OKIJOKE))
+        params["sign"] = createRequestBody(CreateSign(num?.toString(), YesApiServiceName.OKIJOKE))
+        return params
+    }
+
+    //实时天气
+    fun LiveWeather(city: String? =null): HashMap<String, RequestBody> {
+        var cityName = city
+        if (CaesarStringDealTool.isEndWith(cityName as String, "市")) {
+            cityName = CaesarStringDealTool.DeleteEndChar(cityName)
+        }
+        val params = yesApiBaseParams(YesApiServiceName.LiveWeather)
+        params["city"] = createRequestBody(cityName)
+        params["sign"] = createRequestBody(CreateSign(cityName, YesApiServiceName.LiveWeather))
         return params
     }
 

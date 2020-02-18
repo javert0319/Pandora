@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.view.*;
+
 import com.caesarlib.customview.R;
 import com.caesarlib.customview.citychose.model.CityModel;
 import com.caesarlib.customview.citychose.model.DistrictModel;
@@ -14,10 +15,12 @@ import com.caesarlib.customview.citychose.service.XmlParserHandler;
 import com.caesarlib.customview.citychose.widget.OnWheelChangedListener;
 import com.caesarlib.customview.citychose.widget.WheelView;
 import com.caesarlib.customview.citychose.widget.adapters.ArrayWheelAdapter;
+import com.caesarlib.res_tools.CSLog;
 import com.caesarlib.res_tools.ToolsGroble;
 
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
+
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.List;
@@ -54,7 +57,10 @@ public class CityChoseFragmentDialog extends DialogFragment implements OnWheelCh
     private WheelView id_city;
     private WheelView id_district;
 
-    public CityChoseFragmentDialog() {
+    private int type = 0;
+
+    public void setType(int type) {
+        this.type = type;
     }
 
     @Override
@@ -85,20 +91,30 @@ public class CityChoseFragmentDialog extends DialogFragment implements OnWheelCh
     }
 
     private void initView(View view) {
-        id_province = (WheelView) view.findViewById(R.id.id_province);
+        id_province = view.findViewById(R.id.id_province);
         id_province.setViewAdapter(new ArrayWheelAdapter<>(ToolsGroble.INSTANCE.getAppContext(), mProvinceDatas));
         id_province.addChangingListener(this);
         id_province.setVisibleItems(7);
-        id_city = (WheelView) view.findViewById(R.id.id_city);
-        id_city.setVisibleItems(7);
-        id_city.addChangingListener(this);
-        id_district = (WheelView) view.findViewById(R.id.id_district);
-        id_district.setVisibleItems(7);
-        id_district.addChangingListener(this);
+        id_city = view.findViewById(R.id.id_city);
+
+        id_district = view.findViewById(R.id.id_district);
 
         view.findViewById(R.id.btn_comfirm).setOnClickListener(this);
         view.findViewById(R.id.btn_cancle).setOnClickListener(this);
+        if (type == 1) {
+            id_city.setVisibility(View.GONE);
+            id_district.setVisibility(View.GONE);
+            return;
+        }
+        id_city.setVisibleItems(7);
+        id_city.addChangingListener(this);
         updateCities();
+        if (type == 2) {
+            id_district.setVisibility(View.GONE);
+            return;
+        }
+        id_district.setVisibleItems(7);
+//        id_district.addChangingListener(this);
         updateAreas();
     }
 
@@ -109,7 +125,9 @@ public class CityChoseFragmentDialog extends DialogFragment implements OnWheelCh
             CityChoseData cityChoseData = new CityChoseData();
             cityChoseData.setProvince(mCurrentProviceName);
             cityChoseData.setCity(mCurrentCityName);
-            cityChoseData.setDistrict(mDistrictDatasMap.get(mCurrentCityName)[id_district.getCurrentItem()]);
+            if (mDistrictDatasMap.get(mCurrentCityName) != null) {
+                cityChoseData.setDistrict(mDistrictDatasMap.get(mCurrentCityName)[id_district.getCurrentItem()]);
+            }
             CityChoseDialogWorker.getInstance().onDataReturn(cityChoseData);
             dismiss();
         } else if (i == R.id.btn_cancle) {
@@ -120,8 +138,14 @@ public class CityChoseFragmentDialog extends DialogFragment implements OnWheelCh
     @Override
     public void onChanged(WheelView wheel, int oldValue, int newValue) {
         if (wheel == id_province) {
+            if (type == 1) {
+                return;
+            }
             updateCities();
         } else if (wheel == id_city) {
+            if (type == 2) {
+                return;
+            }
             updateAreas();
         }
 
@@ -152,17 +176,26 @@ public class CityChoseFragmentDialog extends DialogFragment implements OnWheelCh
             }
             //*/
             mProvinceDatas = new String[provinceList.size()];
+
             for (int i = 0; i < provinceList.size(); i++) {
                 // 遍历所有省的数据
                 mProvinceDatas[i] = provinceList.get(i).getName();
+                if (type == 1) {
+                    continue;
+                }
                 List<CityModel> cityList = provinceList.get(i).getCityList();
                 String[] cityNames = new String[cityList.size()];
+
                 for (int j = 0; j < cityList.size(); j++) {
                     // 遍历省下面的所有市的数据
                     cityNames[j] = cityList.get(j).getName();
+                    if (type == 2) {
+                        continue;
+                    }
                     List<DistrictModel> districtList = cityList.get(j).getDistrictList();
                     String[] distrinctNameArray = new String[districtList.size()];
                     DistrictModel[] distrinctArray = new DistrictModel[districtList.size()];
+
                     for (int k = 0; k < districtList.size(); k++) {
                         // 遍历市下面所有区/县的数据
                         DistrictModel districtModel = new DistrictModel(districtList.get(k)
@@ -176,6 +209,7 @@ public class CityChoseFragmentDialog extends DialogFragment implements OnWheelCh
                 // 省-市的数据，保存到mCitisDatasMap
                 mCitisDatasMap.put(provinceList.get(i).getName(), cityNames);
             }
+
         } catch (Throwable e) {
             e.printStackTrace();
         }

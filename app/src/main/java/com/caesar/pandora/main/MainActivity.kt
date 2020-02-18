@@ -29,7 +29,7 @@ class MainActivity : BaseActivity<BaseView, MainViewModel>() {
         val binding = DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
         binding.vm = mViewModel
         tabView = findViewById(R.id.res_tools_view1)
-        vpView = findViewById(R.id.res_tools_view2)
+        vpView = findViewById(R.id.res_tools_view3)
     }
 
     override fun onFirstResume() {
