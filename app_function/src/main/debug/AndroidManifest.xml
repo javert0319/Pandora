@@ -11,6 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/res_tools_TranslucentTheme"
         tools:replace="android:label">
+        <activity android:name=".weather.WeatherSevenActivity"/>
         <activity android:name=".entertainment.JokeActivity"/>
         <activity android:name=".DebugMainActivity">
             <intent-filter>

@@ -1,6 +1,8 @@
 package com.caesarlib.fram.view
 
 import android.view.MenuItem
+import android.view.View
+import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
 import com.caesarlib.fram.R
 import com.caesarlib.res_tools.CSLog
@@ -33,6 +35,13 @@ abstract class ToolBarActivity : RxAppCompatActivity(), OnKeyboardListener {
         setSupportActionBar(toobar)
         supportActionBar?.setDisplayHomeAsUpEnabled(displayHomeEnable)
     }
+
+    fun initToorBarInfo(rightTitle: String) {
+        val rightTxt = findViewById<TextView>(R.id.res_tools_tb_right_txt)
+        rightTxt.visibility = View.VISIBLE
+        rightTxt.text = rightTitle
+    }
+
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when (item?.itemId) {

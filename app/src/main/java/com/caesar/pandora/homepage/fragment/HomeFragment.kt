@@ -10,13 +10,14 @@ import com.caesar.pandora.R
 import com.caesar.pandora.databinding.FragmentHomeBinding
 import com.caesarlib.fram.view.BaseFragment
 import com.caesarlib.fram.view.BaseView
+import org.koin.androidx.viewmodel.ext.android.getViewModel
 
 /**
  * 首页的碎片
  */
 class HomeFragment : BaseFragment<BaseView,HomeViewModel>() {
     override fun createViewModel(): HomeViewModel {
-      return  HomeViewModel()
+      return  getViewModel()
     }
 
     override fun onCreateView(

@@ -12,6 +12,7 @@ import com.caesarlib.fram.view.BaseActivity
 import com.caesarlib.fram.view.BaseView
 import com.caesarlib.res_tools.AppNormalTool
 import kotlinx.android.synthetic.main.user_activity_login.*
+import org.koin.androidx.viewmodel.ext.android.getViewModel
 
 @Route(path = "/user/login")
 class LoginActivity : BaseActivity<BaseView, LoginViewModel>() {
@@ -20,7 +21,7 @@ class LoginActivity : BaseActivity<BaseView, LoginViewModel>() {
 
     private lateinit var binding: UserActivityLoginBinding
     override fun createViewModel(): LoginViewModel {
-        return LoginViewModel()
+        return getViewModel()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

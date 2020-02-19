@@ -11,7 +11,7 @@ class WeatherInfo {
     var visibility: String? = null
     var weather: String? = null
     var tem: String? = null
-    var win: String? = null
+    var win: Any? = null
     var win_speed: String? = null
     var win_meter: String? = null
     var humidity: String? = null
@@ -20,4 +20,7 @@ class WeatherInfo {
     var air_pm25: String? = null
     var air_level: String? = null
     var air_tips: String? = null
+    var tem1: String? = null
+    var tem2: String? = null
+    var hours: ArrayList<WeatherHours>? = null
 }

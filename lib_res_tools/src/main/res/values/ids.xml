@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <item name="res_tools_tb_show" type="id" />
+    <item name="res_tools_tb_right_txt" type="id" />
     <item name="res_tools_btn_go" type="id" />
     <item name="res_tools_view1" type="id" />
     <item name="res_tools_view2" type="id" />

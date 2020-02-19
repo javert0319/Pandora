@@ -12,13 +12,14 @@ import com.caesarlib.fram.view.BaseFragment
 import com.caesarlib.fram.view.BaseView
 import com.caesarlib.res_tools.CSLog
 import com.caesarlib.userinfo.ValueUserData
+import org.koin.androidx.viewmodel.ext.android.getViewModel
 
 /**
  * 我的碎片
  */
 class MineFragment : BaseFragment<BaseView, MineViewModel>() {
     override fun createViewModel(): MineViewModel {
-        return MineViewModel()
+        return getViewModel()
     }
 
     override fun onCreateView(

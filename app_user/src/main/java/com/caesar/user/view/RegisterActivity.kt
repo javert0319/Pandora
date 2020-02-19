@@ -11,6 +11,7 @@ import com.caesarlib.fram.view.BaseActivity
 import com.caesarlib.fram.view.BaseView
 import com.caesarlib.res_tools.AppNormalTool
 import kotlinx.android.synthetic.main.user_activity_register.*
+import org.koin.androidx.viewmodel.ext.android.getViewModel
 
 @Route(path = "/user/register")
 class RegisterActivity : BaseActivity<BaseView, RegisterViewModel>() {
@@ -20,7 +21,7 @@ class RegisterActivity : BaseActivity<BaseView, RegisterViewModel>() {
     private lateinit var binding: UserActivityRegisterBinding
 
     override fun createViewModel(): RegisterViewModel {
-        return RegisterViewModel()
+        return getViewModel()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

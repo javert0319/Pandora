@@ -7,11 +7,15 @@ import com.caesar.function.R
 import com.caesar.function.databinding.FunctionActivityJokeBinding
 import com.caesarlib.fram.view.BaseActivity
 import com.caesarlib.fram.view.BaseView
+import org.koin.androidx.viewmodel.ext.android.getViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 @Route(path = "/function/joke")
 class JokeActivity : BaseActivity<BaseView, JokeViewModel>() {
+
+//    val viewM by viewModel<JokeViewModel>()
     override fun createViewModel(): JokeViewModel {
-        return JokeViewModel()
+        return getViewModel()
     }
 
     override fun onFirstResume() {

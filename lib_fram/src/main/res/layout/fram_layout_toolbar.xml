@@ -6,5 +6,15 @@
     android:layout_height="?attr/actionBarSize"
     android:background="@drawable/res_tools_shape_toolbar_background"
     android:theme="@style/res_tools_toolbar_theme"
-    app:title="@string/res_tools_app_name" />
+    app:title="@string/res_tools_app_name">
+
+    <TextView
+        android:id="@id/res_tools_tb_right_txt"
+        android:layout_width="wrap_content"
+        android:textColor="@color/res_tools_cWithe"
+        android:textSize="17sp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:visibility="gone" />
+</androidx.appcompat.widget.Toolbar>
 

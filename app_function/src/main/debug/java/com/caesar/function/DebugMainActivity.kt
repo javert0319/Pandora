@@ -26,8 +26,11 @@ class DebugMainActivity : BaseSimpleActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.function_activity_debug_main)
         initToorBar("功能模块", false)
-        findViewById<AppCompatButton>(R.id.btn_test).setOnClickListener {
+        findViewById<AppCompatButton>(R.id.btn_joke).setOnClickListener {
             ARouter.getInstance().build("/function/joke").navigation()
+        }
+        findViewById<AppCompatButton>(R.id.btn_weather).setOnClickListener {
+            ARouter.getInstance().build("/function/seven_weather").navigation()
         }
 
     }

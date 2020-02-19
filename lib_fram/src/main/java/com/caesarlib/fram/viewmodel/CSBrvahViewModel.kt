@@ -189,8 +189,8 @@ abstract class CSBrvahViewModel<V, B> : BaseViewModel<V>() {
         isRefreshing.set(false)
     }
 
-    override fun detachView() {
-        super.detachView()
+    override fun onCleared() {
+        super.onCleared()
         dispose()
     }
 

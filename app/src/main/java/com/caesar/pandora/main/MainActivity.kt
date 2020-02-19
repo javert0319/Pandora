@@ -13,12 +13,13 @@ import com.caesar.user.fragment.MineFragment
 import com.caesarlib.fram.view.BaseActivity
 import com.caesarlib.fram.view.BaseView
 import com.google.android.material.tabs.TabLayout
+import org.koin.androidx.viewmodel.ext.android.getViewModel
 
 @Route(path = "/main/main")
 class MainActivity : BaseActivity<BaseView, MainViewModel>() {
 
     override fun createViewModel(): MainViewModel {
-        return MainViewModel()
+        return getViewModel()
     }
 
     private lateinit var tabView: TabLayout

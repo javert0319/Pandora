@@ -9,11 +9,12 @@ import com.caesarlib.fram.view.BaseActivity
 import com.caesarlib.fram.view.BaseView
 import com.gyf.immersionbar.BarHide
 import com.gyf.immersionbar.ktx.immersionBar
+import org.koin.androidx.viewmodel.ext.android.getViewModel
 
 @Route(path = "/main/splash")
-class SplashActivity : BaseActivity<BaseView,SplashViewModel>() {
+class SplashActivity : BaseActivity<BaseView, SplashViewModel>() {
     override fun createViewModel(): SplashViewModel {
-        return SplashViewModel()
+        return getViewModel()
     }
 
     override fun onFirstResume() {
@@ -23,7 +24,7 @@ class SplashActivity : BaseActivity<BaseView,SplashViewModel>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
-      val binding =  DataBindingUtil.setContentView<ActivitySplashBinding>(this,R.layout.activity_splash)
+        val binding = DataBindingUtil.setContentView<ActivitySplashBinding>(this, R.layout.activity_splash)
         binding.vm = mViewModel
         immersionBar {
             hideBar(BarHide.FLAG_HIDE_NAVIGATION_BAR)

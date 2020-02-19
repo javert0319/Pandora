@@ -20,6 +20,7 @@ import com.jph.takephoto.permission.PermissionManager
 import com.jph.takephoto.permission.PermissionManager.TPermissionType
 import com.jph.takephoto.permission.TakePhotoInvocationHandler
 import kotlinx.android.synthetic.main.user_activity_user_info.*
+import org.koin.androidx.viewmodel.ext.android.getViewModel
 
 
 @Route(path = "/user/info")
@@ -31,7 +32,7 @@ class UserInfoActivity : BaseActivity<UserInfoView, UserInfoViewModel>(), TakePh
 
     private var invokeParam: InvokeParam? = null
     override fun createViewModel(): UserInfoViewModel {
-        return UserInfoViewModel()
+        return getViewModel()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

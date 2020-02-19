@@ -2,6 +2,7 @@ package com.caesarlib.fram.view
 
 import android.os.Bundle
 import com.caesarlib.fram.viewmodel.BaseViewModel
+import com.caesarlib.res_tools.CSLog
 
 /**基类activity
  * created by Caesar on 2019/1/25
@@ -27,7 +28,7 @@ abstract class BaseActivity<V, T : BaseViewModel<V>> : ToolBarActivity(), BaseVi
     }
 
     override fun onDestroy() {
-        mViewModel?.detachView()
+//        mViewModel?.detachView()
         super.onDestroy()
     }
 }

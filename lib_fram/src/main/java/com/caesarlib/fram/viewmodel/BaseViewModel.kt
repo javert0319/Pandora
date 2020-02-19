@@ -44,15 +44,15 @@ abstract class BaseViewModel<V> : AndroidViewModel(FramGroble.getApp() as Applic
 
     }
 
-    open fun detachView() {
-        CSLog.d("调用了detachView")
-        mViewRef?.clear()
-        mViewRef = null
-        viewModelScope.cancel()
-    }
+//    open fun detachView() {
+//        CSLog.d("调用了detachView")
+//    }
 
     override fun onCleared() {
         super.onCleared()
-        detachView()
+        CSLog.d("调用了onCleared")
+        mViewRef?.clear()
+        mViewRef = null
+        viewModelScope.cancel()
     }
 }
