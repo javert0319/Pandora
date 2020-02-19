@@ -21,6 +21,5 @@ class WeatherSevenActivity : BaseActivity<BaseView, WeatherSevenViewModel>() {
     }
 
     override fun onFirstResume() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 }

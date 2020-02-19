@@ -11,4 +11,7 @@
         android:id="@id/res_tools_tb_show"
         layout="@layout/fram_layout_toolbar" />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 </LinearLayout>
