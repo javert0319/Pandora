@@ -48,6 +48,12 @@
     <string name="res_tools_joke">每日一笑</string>
     <string name="res_tools_nouser">请登录或注册</string>
     <string name="res_tools_nocity">当前暂无选择城市</string>
+    <string name="res_tools_chose_city">选择城市</string>
+    <string name="res_tools_max_tem">最高温度</string>
+    <string name="res_tools_min_tem">最低温度</string>
+    <string name="res_tools_wind_speed">风速</string>
+    <string name="res_tools_air_tips">天气建议:&#160;&#160;&#160;&#160;</string>
+    <string name="res_tools_hour_air">&#160;&#160;小时天气</string>
 
 
     <!--基本数据-->
@@ -59,4 +65,5 @@
     <string name="res_tools_font_friend">&#xf2b5;</string>
     <string name="res_tools_font_mine">&#xf007;</string>
     <string name="res_tools_font_refresh">&#xf021;</string>
+    <string name="res_tools_font_arrows">&#xf07d;</string>
 </resources>

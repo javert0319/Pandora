@@ -1,10 +1,14 @@
 package com.caesarlib.network.bean.yesapi
 
+import androidx.databinding.ObservableField
+
 /**
  * Created by Caesar
  * email : caesarshao@163.com
  */
 class WeatherInfo {
+
+    var day: String? = null
     var date: String? = null
     var time: String? = null
     var city: String? = null
@@ -22,5 +26,8 @@ class WeatherInfo {
     var air_tips: String? = null
     var tem1: String? = null
     var tem2: String? = null
+    var wea: String? = null
     var hours: ArrayList<WeatherHours>? = null
+
+    var selectTag = ObservableField<Boolean>(true)
 }

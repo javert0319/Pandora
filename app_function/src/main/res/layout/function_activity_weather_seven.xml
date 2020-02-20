@@ -1,17 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:orientation="vertical"
-    android:layout_height="match_parent"
-    tools:context=".weather.WeatherSevenActivity">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <include
-        android:id="@id/res_tools_tb_show"
-        layout="@layout/fram_layout_toolbar" />
+    <data>
 
-    <androidx.recyclerview.widget.RecyclerView
+        <variable
+            name="vm"
+            type="com.caesar.function.weather.WeatherSevenViewModel" />
+
+        <import type="androidx.recyclerview.widget.RecyclerView" />
+
+        <import type="com.caesarlib.brvahbinding.CSBrvahLayoutManager" />
+
+    </data>
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
-</LinearLayout>
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".weather.WeatherSevenActivity">
+
+        <include
+            android:id="@id/res_tools_tb_show"
+            layout="@layout/fram_layout_toolbar"
+            app:model="@{vm}" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_showTop"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            app:cs_brvah_Decoration="@{vm.itemDecorationA}"
+            app:cs_brvah_adapter="@{vm.bindingAdapterA}"
+            app:cs_brvah_emptyClickListener="@{vm.emptyOnClickListenerA}"
+            app:cs_brvah_emptyResId="@{vm.emptyResIdA}"
+            app:cs_brvah_layoutManager="@{CSBrvahLayoutManager.linear(RecyclerView.HORIZONTAL,false)}" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/res_tools_color_item_divid" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:gravity="center"
+            android:text="@{@string/res_tools_air_tips+vm.airTip}" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:gravity="center"
+            android:text="@{vm.currDay+@string/res_tools_hour_air}" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/res_tools_color_item_divid" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            app:cs_brvah_Decoration="@{vm.itemDecorationA}"
+            app:cs_brvah_adapter="@{vm.bindingAdapterB}"
+            app:cs_brvah_emptyClickListener="@{vm.emptyOnClickListenerB}"
+            app:cs_brvah_emptyResId="@{vm.emptyResIdB}"
+            app:cs_brvah_layoutManager="@{CSBrvahLayoutManager.linear(RecyclerView.HORIZONTAL,false)}" />
+
+
+    </LinearLayout>
+</layout>

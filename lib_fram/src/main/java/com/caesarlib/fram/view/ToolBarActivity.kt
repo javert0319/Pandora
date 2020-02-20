@@ -16,7 +16,7 @@ import com.trello.rxlifecycle2.components.support.RxAppCompatActivity
  * email : 15757855271@163.com
  */
 abstract class ToolBarActivity : RxAppCompatActivity(), OnKeyboardListener {
-
+    var rightTxt: TextView? = null
     protected fun initToorBar(
         title: String,
         displayHomeEnable: Boolean = true,
@@ -34,12 +34,6 @@ abstract class ToolBarActivity : RxAppCompatActivity(), OnKeyboardListener {
         }
         setSupportActionBar(toobar)
         supportActionBar?.setDisplayHomeAsUpEnabled(displayHomeEnable)
-    }
-
-    fun initToorBarInfo(rightTitle: String) {
-        val rightTxt = findViewById<TextView>(R.id.res_tools_tb_right_txt)
-        rightTxt.visibility = View.VISIBLE
-        rightTxt.text = rightTitle
     }
 
 

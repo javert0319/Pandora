@@ -138,11 +138,21 @@ public class CityChoseFragmentDialog extends DialogFragment implements OnWheelCh
     @Override
     public void onChanged(WheelView wheel, int oldValue, int newValue) {
         if (wheel == id_province) {
+            int pCurrent = id_province.getCurrentItem();
+            mCurrentProviceName = mProvinceDatas[pCurrent];
             if (type == 1) {
                 return;
             }
+            int pCurrentCity = id_city.getCurrentItem();
+            if (mCitisDatasMap != null && mCitisDatasMap.size() > 0 && mCitisDatasMap.get(mCurrentProviceName).length >= pCurrentCity) {
+                mCurrentCityName = mCitisDatasMap.get(mCurrentProviceName)[pCurrentCity];
+            }
             updateCities();
         } else if (wheel == id_city) {
+            int pCurrentCity = id_city.getCurrentItem();
+            if (mCitisDatasMap != null && mCitisDatasMap.size() > 0 && mCitisDatasMap.get(mCurrentProviceName).length >= pCurrentCity) {
+                mCurrentCityName = mCitisDatasMap.get(mCurrentProviceName)[pCurrentCity];
+            }
             if (type == 2) {
                 return;
             }
@@ -219,8 +229,7 @@ public class CityChoseFragmentDialog extends DialogFragment implements OnWheelCh
      * 根据当前的省，更新市WheelView的信息
      */
     private void updateCities() {
-        int pCurrent = id_province.getCurrentItem();
-        mCurrentProviceName = mProvinceDatas[pCurrent];
+
         String[] cities = mCitisDatasMap.get(mCurrentProviceName);
         if (cities == null) {
             cities = new String[]{""};
@@ -234,8 +243,7 @@ public class CityChoseFragmentDialog extends DialogFragment implements OnWheelCh
      * 根据当前的市，更新区WheelView的信息
      */
     private void updateAreas() {
-        int pCurrent = id_city.getCurrentItem();
-        mCurrentCityName = mCitisDatasMap.get(mCurrentProviceName)[pCurrent];
+
         String[] areas = mDistrictDatasMap.get(mCurrentCityName);
 
         if (areas == null) {

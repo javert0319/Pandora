@@ -159,15 +159,15 @@ object ParamsFactary {
         return params
     }
 
-    //实时天气
-    fun LiveWeather(city: String? =null): HashMap<String, RequestBody> {
+    //实时天气和一周天气,默认实时天气
+    fun LiveWeather(city: String? =null,apiName:String? = YesApiServiceName.LiveWeather): HashMap<String, RequestBody> {
         var cityName = city
         if (CaesarStringDealTool.isEndWith(cityName as String, "市")) {
             cityName = CaesarStringDealTool.DeleteEndChar(cityName)
         }
-        val params = yesApiBaseParams(YesApiServiceName.LiveWeather)
+        val params = yesApiBaseParams(apiName)
         params["city"] = createRequestBody(cityName)
-        params["sign"] = createRequestBody(CreateSign(cityName, YesApiServiceName.LiveWeather))
+        params["sign"] = createRequestBody(CreateSign(cityName, apiName))
         return params
     }
 

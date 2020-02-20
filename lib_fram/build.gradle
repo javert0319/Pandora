@@ -22,6 +22,9 @@ android {
 
     resourcePrefix "fram_"
 
+    dataBinding {
+        enabled true
+    }
 }
 
 dependencies {

@@ -2,5 +2,6 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:drawable="@color/res_tools_color_d" android:state_pressed="true"/>
     <item android:drawable="@color/res_tools_color_d" android:state_enabled="false"/>
+    <item android:drawable="@color/res_tools_color_d" android:state_selected="true"/>
     <item android:drawable="@color/res_tools_cWithe"/>
 </selector>

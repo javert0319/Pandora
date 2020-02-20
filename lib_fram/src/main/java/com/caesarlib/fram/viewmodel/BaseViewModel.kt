@@ -1,6 +1,8 @@
 package com.caesarlib.fram.viewmodel
 
 import android.app.Application
+import android.view.View
+import androidx.databinding.ObservableField
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.caesarlib.fram.global.FramGroble
@@ -18,6 +20,7 @@ import java.lang.ref.WeakReference
  * email : 15757855271@163.com
  */
 abstract class BaseViewModel<V> : AndroidViewModel(FramGroble.getApp() as Application) {
+    val titleBarRightTxt = ObservableField<String>()
 
     protected var mViewRef: Reference<V>? = null
 
@@ -40,7 +43,7 @@ abstract class BaseViewModel<V> : AndroidViewModel(FramGroble.getApp() as Applic
     }
 
     //异步操作出现异常,调用
-   open fun onNetFail(){
+    open fun onNetFail() {
 
     }
 
@@ -54,5 +57,9 @@ abstract class BaseViewModel<V> : AndroidViewModel(FramGroble.getApp() as Applic
         mViewRef?.clear()
         mViewRef = null
         viewModelScope.cancel()
+    }
+
+    open fun rightTxtClick(view:View) {
+
     }
 }

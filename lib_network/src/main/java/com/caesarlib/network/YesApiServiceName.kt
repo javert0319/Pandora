@@ -16,4 +16,5 @@ object YesApiServiceName {
     const val DeleteFile = "App.CDN.Delete"//删除图片或文件
     const val OKIJOKE = "App.Common_Joke.RandOne"//随机一个笑话
     const val LiveWeather = "App.Common_Weather.LiveWeather"//地区实时天气状况
+    const val WeekWeather = "App.Common_Weather.WeekWeather"//一周天气状况
 }

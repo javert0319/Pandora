@@ -5,6 +5,7 @@ import androidx.databinding.Observable
 import androidx.databinding.Observable.OnPropertyChangedCallback
 import androidx.databinding.ObservableArrayList
 import androidx.databinding.ObservableField
+import com.alibaba.android.arouter.launcher.ARouter
 import com.caesarlib.customview.citychose.CityChoseDialogWorker
 import com.caesarlib.fram.beans.KeyValueSData
 import com.caesarlib.fram.global.FramGroble
@@ -77,5 +78,9 @@ class HomeWeatherData(var viewScope: CoroutineScope) : NormalNetModel(), MultiIt
 
     fun refreshWeather() {
         getWeather()
+    }
+
+    fun goWeekWeather(){
+        ARouter.getInstance().build("/function/seven_weather").greenChannel().navigation()
     }
 }

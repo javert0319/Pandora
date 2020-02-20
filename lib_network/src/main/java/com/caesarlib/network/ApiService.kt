@@ -63,5 +63,8 @@ interface ApiService {
     @POST("?service=" + YesApiServiceName.LiveWeather)
     suspend fun LiveWeather(@PartMap options: HashMap<String, RequestBody>): BaseYesApiBean<WeatherData>
 
+    @Multipart
+    @POST("?service=" + YesApiServiceName.WeekWeather)
+    suspend fun WeekWeather(@PartMap options: HashMap<String, RequestBody>): BaseYesApiBean<WeekWeatherData>
 
 }
