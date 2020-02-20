@@ -7,10 +7,7 @@ import androidx.databinding.ObservableInt
 import androidx.lifecycle.viewModelScope
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-import com.caesarlib.brvahbinding.CSBindingAdapter
-import com.caesarlib.brvahbinding.CSBravhItemBinding
-import com.caesarlib.brvahbinding.CSItemBindingAdapter
-import com.caesarlib.brvahbinding.CSLog
+import com.caesarlib.brvahbinding.*
 import com.caesarlib.fram.R
 import com.caesarlib.fram.global.CSEmptyViewType
 import com.chad.library.adapter.base.BaseQuickAdapter
@@ -85,7 +82,7 @@ abstract class CSBrvahViewModel<V, B> : BaseViewModel<V>() {
     //空布局的点击事件,里面做判断,如果当前空布局不是正在加载的状态,点击之后,就重新获取数据
     protected fun onEmptyOnClickListener(): View.OnClickListener {
         return View.OnClickListener {
-            CSLog.Print("点击了空布局按钮")
+            CSbrvahLog.Print("点击了空布局按钮")
             if (emptyResId.get() != getEmptyViewRes(CSEmptyViewType.LOADING)) {
                 reload()
                 emptyResId.set(getEmptyViewRes(CSEmptyViewType.LOADING))
@@ -156,20 +153,20 @@ abstract class CSBrvahViewModel<V, B> : BaseViewModel<V>() {
         if (isRefreshing.get()) {
             emptyResId.set(getEmptyViewRes(CSEmptyViewType.REFRESH))
         } else {
-            CSLog.Print("调用了正在加载界面")
+            CSbrvahLog.Print("调用了正在加载界面")
             emptyResId.set(getEmptyViewRes(CSEmptyViewType.LOADING))
         }
         disposable = flowable.observeOn(AndroidSchedulers.mainThread())
             .subscribeOn(Schedulers.io())
             .subscribe({ bs ->
-                CSLog.Print("收到数据了")
+                CSbrvahLog.Print("收到数据了")
                 addItems(bs)
             }, {
-                CSLog.Print("出现异常")
+                CSbrvahLog.Print("出现异常")
                 emptyResId.set(getEmptyViewRes(CSEmptyViewType.ERROR))
                 isRefreshing.set(false)
             }, {
-                CSLog.Print("完成加载了")
+                CSbrvahLog.Print("完成加载了")
                 emptyResId.set(getEmptyViewRes(CSEmptyViewType.EMPTY))
                 isRefreshing.set(false)
                 onDataLoadComplete()
@@ -184,7 +181,7 @@ abstract class CSBrvahViewModel<V, B> : BaseViewModel<V>() {
     }
 
     override fun onNetFail() {
-        CSLog.Print("出现异常")
+        CSbrvahLog.Print("出现异常")
         emptyResId.set(getEmptyViewRes(CSEmptyViewType.ERROR))
         isRefreshing.set(false)
     }

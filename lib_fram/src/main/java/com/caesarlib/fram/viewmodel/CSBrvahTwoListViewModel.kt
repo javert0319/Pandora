@@ -7,10 +7,7 @@ import androidx.databinding.ObservableInt
 import androidx.lifecycle.viewModelScope
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout.OnRefreshListener
-import com.caesarlib.brvahbinding.CSBindingAdapter
-import com.caesarlib.brvahbinding.CSBravhItemBinding
-import com.caesarlib.brvahbinding.CSItemBindingAdapter
-import com.caesarlib.brvahbinding.CSLog
+import com.caesarlib.brvahbinding.*
 import com.caesarlib.fram.R
 import com.caesarlib.fram.global.CSEmptyViewType
 import com.caesarlib.network.bean.base.BaseYesApiBean
@@ -171,20 +168,20 @@ abstract class CSBrvahTwoListViewModel<V, A, B> : BaseViewModel<V>() {
         if (isRefreshingA!!.get()) {
             emptyResIdA!!.set(getEmptyViewRes(CSEmptyViewType.REFRESH))
         } else {
-            CSLog.Print("调用了正在加载界面")
+            CSbrvahLog.Print("调用了正在加载界面")
             emptyResIdA!!.set(getEmptyViewRes(CSEmptyViewType.LOADING))
         }
         disposableA = flowable.observeOn(AndroidSchedulers.mainThread())
             .subscribeOn(Schedulers.io())
             .subscribe({ bs ->
-                CSLog.Print("收到数据了")
+                CSbrvahLog.Print("收到数据了")
                 addItemsA(bs)
             }, {
-                CSLog.Print("出现异常")
+                CSbrvahLog.Print("出现异常")
                 emptyResIdA!!.set(getEmptyViewRes(CSEmptyViewType.ERROR))
                 isRefreshingA!!.set(false)
             }) {
-                CSLog.Print("完成加载了")
+                CSbrvahLog.Print("完成加载了")
                 emptyResIdA!!.set(getEmptyViewRes(CSEmptyViewType.EMPTY))
                 isRefreshingA!!.set(false)
                 onDataLoadCompleteA()
@@ -211,20 +208,20 @@ abstract class CSBrvahTwoListViewModel<V, A, B> : BaseViewModel<V>() {
         if (isRefreshingB!!.get()) {
             emptyResIdB!!.set(getEmptyViewRes(CSEmptyViewType.REFRESH))
         } else {
-            CSLog.Print("调用了正在加载界面")
+            CSbrvahLog.Print("调用了正在加载界面")
             emptyResIdB!!.set(getEmptyViewRes(CSEmptyViewType.LOADING))
         }
         disposableB = flowable.observeOn(AndroidSchedulers.mainThread())
             .subscribeOn(Schedulers.io())
             .subscribe({ bs ->
-                CSLog.Print("收到数据了")
+                CSbrvahLog.Print("收到数据了")
                 addItemsB(bs)
             }, {
-                CSLog.Print("出现异常")
+                CSbrvahLog.Print("出现异常")
                 emptyResIdB!!.set(getEmptyViewRes(CSEmptyViewType.ERROR))
                 isRefreshingB!!.set(false)
             }) {
-                CSLog.Print("完成加载了")
+                CSbrvahLog.Print("完成加载了")
                 emptyResIdB!!.set(getEmptyViewRes(CSEmptyViewType.EMPTY))
                 isRefreshingB!!.set(false)
                 onDataLoadCompleteB()
@@ -234,7 +231,7 @@ abstract class CSBrvahTwoListViewModel<V, A, B> : BaseViewModel<V>() {
 
     protected fun onEmptyOnClickListenerA(): View.OnClickListener {
         return View.OnClickListener {
-            CSLog.Print("点击了空布局按钮")
+            CSbrvahLog.Print("点击了空布局按钮")
             if (emptyResIdA!!.get() != getEmptyViewRes(CSEmptyViewType.LOADING)) {
                 reloadA()
                 emptyResIdA!!.set(getEmptyViewRes(CSEmptyViewType.LOADING))
@@ -244,7 +241,7 @@ abstract class CSBrvahTwoListViewModel<V, A, B> : BaseViewModel<V>() {
 
     protected fun onEmptyOnClickListenerB(): View.OnClickListener {
         return View.OnClickListener {
-            CSLog.Print("点击了空布局按钮")
+            CSbrvahLog.Print("点击了空布局按钮")
             if (emptyResIdB!!.get() != getEmptyViewRes(CSEmptyViewType.LOADING)) {
                 reloadB()
                 emptyResIdB!!.set(getEmptyViewRes(CSEmptyViewType.LOADING))
@@ -315,13 +312,13 @@ abstract class CSBrvahTwoListViewModel<V, A, B> : BaseViewModel<V>() {
 
 
     open fun onNetFailA() {
-        CSLog.Print("A出现异常")
+        CSbrvahLog.Print("A出现异常")
         emptyResIdA?.set(getEmptyViewRes(CSEmptyViewType.ERROR))
         isRefreshingA?.set(false)
     }
 
     open fun onNetFailB() {
-        CSLog.Print("B出现异常")
+        CSbrvahLog.Print("B出现异常")
         emptyResIdB?.set(getEmptyViewRes(CSEmptyViewType.ERROR))
         isRefreshingB?.set(false)
     }
