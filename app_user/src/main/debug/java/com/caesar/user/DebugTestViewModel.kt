@@ -44,7 +44,7 @@ class DebugTestViewModel : CSBrvahViewModel<BaseView, TestData>() {
             das.add(TestData(ObservableField<String>("dfhdfh")))
             das.add(TestData(ObservableField<String>("11")))
             das.add(TestData(ObservableField<String>("22")))
-            das.get(9)
+//            das.get(9)
             load(das)
         }
     }

@@ -1,12 +1,17 @@
 package com.caesar.user
 
 import android.os.Bundle
+import android.widget.LinearLayout
 import androidx.appcompat.widget.AppCompatButton
 import com.alibaba.android.arouter.launcher.ARouter
+import com.billy.android.swipe.SmartSwipe
+import com.billy.android.swipe.SmartSwipeBack
+import com.billy.android.swipe.consumer.StretchConsumer
+import com.caesarlib.fram.global.FramGroble
 import com.caesarlib.fram.view.BaseActivity
 import com.caesarlib.fram.view.BaseView
 
-class DebugMainActivity : BaseActivity<BaseView,DebugMainViewModel>() {
+class DebugMainActivity : BaseActivity<BaseView, DebugMainViewModel>() {
     override fun createViewModel(): DebugMainViewModel {
         return DebugMainViewModel()
     }
@@ -20,8 +25,8 @@ class DebugMainActivity : BaseActivity<BaseView,DebugMainViewModel>() {
         setContentView(R.layout.user_activity_debug_main)
         initToorBar("用户模块", false)
         findViewById<AppCompatButton>(R.id.btn_test).setOnClickListener {
-            onFirstResume()
-//                        ARouter.getInstance().build("/user/test").navigation()
+            //            onFirstResume()
+            ARouter.getInstance().build("/user/test").navigation()
         }
         findViewById<AppCompatButton>(R.id.btn_login).setOnClickListener {
             ARouter.getInstance().build("/user/login").navigation()
@@ -38,6 +43,11 @@ class DebugMainActivity : BaseActivity<BaseView,DebugMainViewModel>() {
         findViewById<AppCompatButton>(R.id.btn_userinfo).setOnClickListener {
             ARouter.getInstance().build("/user/info").navigation()
         }
+
+        val llShow = findViewById<LinearLayout>(R.id.ll_show)
+        SmartSwipe.wrap(llShow)
+            .addConsumer(StretchConsumer())
+            .enableVertical()
 
     }
 }

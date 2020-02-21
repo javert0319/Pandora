@@ -8,39 +8,49 @@
         android:id="@+id/res_tools_tb_show"
         layout="@layout/fram_layout_toolbar" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_test"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="测试界面" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_login"
+    <LinearLayout
+        android:id="@+id/ll_show"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="登陆界面" />
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_register"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="注册界面" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_reset_password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="修改密码" />
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_test"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="测试界面" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_protocol"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="注册协议" />
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_userinfo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="用户信息" />
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="登陆界面" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_register"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="注册界面" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_reset_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="修改密码" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_protocol"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="注册协议" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_userinfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="用户信息" />
+    </LinearLayout>
 </LinearLayout>

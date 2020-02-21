@@ -40,4 +40,6 @@ dependencies {
     api rootProject.ext.dependencies.lifecycle_viewmodel_ktx
     api rootProject.ext.dependencies.csbrvahbinding
     api rootProject.ext.dependencies.autosize
+    api rootProject.ext.dependencies.smartSwipex
+    api rootProject.ext.dependencies.smartSwipe
 }

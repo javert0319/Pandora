@@ -67,5 +67,9 @@ ext {
             koin_androidx_scope       : 'org.koin:koin-androidx-scope:2.1.0-alpha-3',
             koin_androidx_viewmodel   : 'org.koin:koin-androidx-viewmodel:2.1.0-alpha-3',
             koin_androidx_fragment    : 'org.koin:koin-androidx-fragment:2.1.0-alpha-3',
+            /*侧滑返回,弹性控件*/
+            smartSwipex               : 'com.billy.android:smart-swipe-x:1.1.0',
+            smartSwipe                : 'com.billy.android:smart-swipe:1.1.2',
+
     ]
 }
